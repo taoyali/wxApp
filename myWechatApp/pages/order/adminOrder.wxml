@@ -1,10 +1,20 @@
 <view class="adminOrder">
-<loading hidden="{{loadingView_hidden}}" bindchange="loadingChange">
+<!-- <loading hidden="{{loadingView_hidden}}" bindchange="loadingChange">
     加载中...
-</loading>
-<view wx:for="{{adminOrders}}">
-<!-- {{index}}: {{item.distributorCode}} -->
+</loading> -->
+
+
+<!-- <view wx:for="{{adminOrders}}">
   <view> {{index}}: </view>
-    <view> {{item.distributorCode}}: </view>
+  <view> {{item.distributorCode}}: </view>
+</view>  -->
+
+
+
+<view wx:for="{{swiperData}}">
+  <view> {{index}}: </view>
+  <view> {{item.imgSrc}}: </view>
 </view>
+
+
 </view>

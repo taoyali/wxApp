@@ -2,6 +2,7 @@
   "pages":[
     "pages/login/login",
     "pages/order/adminOrder",
+    "pages/order/adminOrderDetail",
     "pages/index/index",
     "pages/index/mainPage/mainPage",
     "pages/logs/logs"

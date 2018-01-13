@@ -37,6 +37,7 @@
   background-color: #00a0ff;
   color: #fff; 
   margin-top: 80rpx;
+  text-align: center;
 }
 
 .loginFormItem {

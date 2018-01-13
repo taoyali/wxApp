@@ -1,0 +1,7 @@
+<view>
+
+<view style='background: #000, width: 300px, height: 400px'> {{titleName}}</view>
+
+<view style='background: #000, width: 300px, height: 400px'> {{subName}}</view>
+
+</view>
