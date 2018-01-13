@@ -1,0 +1,11 @@
+<view class='login'>
+<view class='identifyView'>
+<image class='identifyIcon' src='../../images/login/loginLogo.png'>
+</image>
+</view>
+<view class='loginform'>
+  <input class="phoneNumber loginInput loginFormItem" type="number" bindchange="bindchangeInput" id="phoneNumber" placeholder='{{phoneNumberPlaceHolder}}' />
+  <input class="loginInput loginFormItem" bindchange="bindchangeInput" placeholder='{{passWordPlaceHolder}}' password='true' />
+  <button class='loginButton loginFormItem' bindtap='loginAction' >{{loginButtonText}}</button>
+</view>
+</view>

@@ -1,0 +1,4 @@
+<!--mainPage.wxml-->
+<view>
+<text> mainPage </text> 
+</view>

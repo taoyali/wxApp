@@ -1,0 +1,47 @@
+/* pages/login/login.wxss */
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.identifyView {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.identifyIcon { 
+  width: 300rpx;
+  height: 60rpx;
+  position: relative;
+  margin-top: 200rpx; 
+}
+
+.loginform {
+  width: 400rpx; 
+  height: 300rpx;
+  position: relative;
+  margin-top: 100rpx; 
+}
+
+.loginInput { 
+  margin-top:10pt;
+  border-bottom-color: grey;
+  border-bottom-width: 1px;
+  border-bottom-style: solid
+}
+
+.loginButton {  
+  height: 300rpx;
+  background-color: #00a0ff;
+  color: #fff; 
+  margin-top: 80rpx;
+}
+
+.loginFormItem {
+  width: 400rpx;  
+  height: 80rpx;
+  text-align: center;
+  font-size: 12pt;
+}
