@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="./js/RequestJS.js"></script>
+    <script type="text/javascript">
+
+        function loadData() {
+            var data = {name:"taoyali", phone:"13645455612", pwd:"123"};
+            postRequest("http://localhost:9999/RegistServlet", data);
+        }
+    </script>
+
+    <title>首页</title>
+</head>
+<body>
+
+<button onclick="loadData()">请求数据</button>
+
+</body>
+</html>

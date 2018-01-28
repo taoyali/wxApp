@@ -1,3 +1,6 @@
+
+
+
 .homelist{
   width:100%;
   white-space: nowrap;
@@ -5,7 +8,7 @@
   position: fixed;
   top: 0;
   z-index:1;
-  /*background-color: #f67300;*/
+background-color: #f67300;
 }
 
 .cellTopContent{
