@@ -1,7 +1,5 @@
 package util;
 
-import com.alibaba.fastjson.JSONObject;
-
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.HashMap;

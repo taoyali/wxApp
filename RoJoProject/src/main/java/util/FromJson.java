@@ -1,6 +1,5 @@
 package util;
 
-import com.alibaba.fastjson.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -8,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.*;
 
 /**
  * Created by taoyali on 2018/1/28.

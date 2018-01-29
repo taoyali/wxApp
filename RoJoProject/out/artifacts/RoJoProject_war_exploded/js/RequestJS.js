@@ -120,5 +120,5 @@ function postRequest(url, data) {
     if(typeof FormData == "undefined") {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     }
-    xhr.send(postDataFormat(data));
+    xhr.send(data);
 }

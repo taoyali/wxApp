@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <script type="text/javascript" src="./js/RequestJS.js"></script>
+    <script type="text/javascript" src="./js/axios.min.js"></script>
     <script type="text/javascript">
 
         function loadData() {
             var data = {name:"taoyali", phone:"13645455612", pwd:"123"};
-            postRequest("http://localhost:9999/RegistServlet", data);
+            axios.post('http://localhost:9999/RegistServlet', data)
+                .then(function (response) {
+                    if (alert(response.status) != 200) {
+//                        alert(response.data["errorCode"]);
+//                        alert(response.data["errorType"]);
+                        alert(response.data["errorInfo"]);
+                    } else {
+                        alert(response.status);
+                        alert(response.statusText);
+                        alert(response.headers);
+                        alert(response.config);
+                    }
+                })
+                .catch(function (error) {
+                    alert(error);
+                });
         }
     </script>
 
