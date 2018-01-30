@@ -20,7 +20,7 @@ public class FromJson {
      * @return
      * @throws IOException
      */
-    public static JSONObject getJsonObject(HttpServletRequest request) throws IOException{
+    public static JSONObject getJsonObject(HttpServletRequest request) throws Exception {
         String resultStr = "";
         String readLine;
         StringBuffer sb = new StringBuffer();
@@ -40,6 +40,8 @@ public class FromJson {
                 outputStream.close();
             }
         }
+
+//        String originString = MyMD5.getMD5Code(resultStr);
         JSONObject jsonObject = JSONObject.parseObject(resultStr);
         return jsonObject;
     }

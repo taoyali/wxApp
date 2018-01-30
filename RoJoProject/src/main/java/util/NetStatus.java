@@ -9,5 +9,5 @@ public class NetStatus {
     }
     public TYLError error;
     public NetStatusType status;
-    public id data;
+//    public id data;
 }

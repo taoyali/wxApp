@@ -28,39 +28,45 @@ public class RegistServlet extends HttpServlet {
 //        String json = FromJson.getRequestJsonString(request);
 //        ManageUser manageUser = FromJson.StringToEntity(json, ManageUser.class);//json字符串转换成jsonobject对象
 
-        JSONObject jsonObject = FromJson.getJsonObject(request);
-        String name = jsonObject.getString("name");
-        String pwd = jsonObject.getString("pwd");
-        String phone = jsonObject.getString("pwd");
-        if (!CheckPhone.isPhoneLegal(phone)) {
-
-            TYLError error = new TYLError();
-            error.errorCode = "1234";
-            error.errorInfo = "参数错误";
-            error.errorType = TYLError.ErrorType.ErrorParameter;
-            NetStatus status = new NetStatus();
-            status.error = error;
-            status.status = NetStatusTypeError;
-            ResponseJsonUtils.json(response, status);
-            return;
-        }
-
-        DBManageUserOperation dbManageUserOperation = new DBManageUserOperation();
-        String registStatus = new String();
-        Boolean status = false;
         try {
-            status = dbManageUserOperation.addUser(phone, pwd);
-            if (status) {
-                registStatus = "注册成功";
-            } else  {
-                registStatus = "注册失败";
+            JSONObject jsonObject = FromJson.getJsonObject(request);
+            String name = jsonObject.getString("name");
+            String pwd = jsonObject.getString("pwd");
+            String phone = jsonObject.getString("pwd");
+            if (!CheckPhone.isPhoneLegal(phone)) {
+
+                TYLError error = new TYLError();
+                error.errorCode = "1234";
+                error.errorInfo = "参数错误";
+                error.errorType = TYLError.ErrorType.ErrorParameter;
+                NetStatus status = new NetStatus();
+                status.error = error;
+                status.status = NetStatusTypeError;
+                ResponseJsonUtils.json(response, status);
+                return;
             }
+
+            DBManageUserOperation dbManageUserOperation = new DBManageUserOperation();
+            String registStatus = new String();
+            Boolean status = false;
+            try {
+                status = dbManageUserOperation.addUser(phone, pwd);
+                if (status) {
+                    registStatus = "注册成功";
+                } else  {
+                    registStatus = "注册失败";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (status) {
+                ResponseJsonUtils.json(response, error);
+            }
+
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
-        if (status) {
-            ResponseJsonUtils.json(response, error);
-        }
+
 
 //        response.setContentType("text/html;charset=UTF-8");
 //        PrintWriter pw = response.getWriter();
