@@ -3,8 +3,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-    <meta http-equiv="description" content="基于HTML5和CSS3，运用CSS滤镜做的精美登录界面">
-    <meta http-equiv="date" content="2013-06-20">
+    <meta http-equiv="description" content="登录界面">
     <meta charset="UTF-8">
     <script type="text/javascript" src="./js/RequestJS.js"></script>
     <script type="text/javascript" src="./js/axios.min.js"></script>
@@ -15,6 +14,7 @@
 //            postRequest("http://localhost:9999/RegistServlet", data);
 //            var hash = hex_md5(data);
 //            var hash = hex_md5(data);
+
             axios.post('http://localhost:9999/RegistServlet', data)
                 .then(function (response) {
                     alert(response);

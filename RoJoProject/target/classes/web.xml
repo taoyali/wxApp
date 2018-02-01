@@ -30,6 +30,24 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>DealerServlet</servlet-name>
+        <servlet-class>servlet.DealerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DealerServlet</servlet-name>
+        <url-pattern>*.DealerServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>servlet.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/OrderServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AuthenticationServlet</servlet-name>
         <servlet-class>servlet.AuthenticationServlet</servlet-class>
     </servlet>
@@ -55,4 +73,8 @@
         <exception-type>java.lang.Throwable</exception-type >
         <location>/HttpError</location>
     </error-page>
+
+    <welcome-file-list>
+        <welcome-file>AddDealer.html</welcome-file>
+    </welcome-file-list>
 </web-app>

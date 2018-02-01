@@ -32,7 +32,6 @@ public class Order implements DAOCallBack {
     // 衬板高度
     public float scaleboardHeight;
 
-    
     public List<Order> callBack(ResultSet resultSet) throws Exception {
         List<Order> managerUsers = new ArrayList<Order>();
         while (resultSet.next()) {

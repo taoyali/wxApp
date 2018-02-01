@@ -1,6 +1,7 @@
 package DB;
 
 import DAO.DAOCallBack;
+import DAO.Dealer;
 import DAO.ManageUser;
 import DAO.UserInfo;
 import DB.DBConnect.MysqlDBConnect;
@@ -10,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -80,4 +82,23 @@ public class DBManageUserOperation implements DBOperation {
 //        sql = "insert into users (name, pwd, email) values ( 'zhangqi', 'taoyali', null)";
         return this.pStatement.executeUpdate() > 0;
     }
+
+    public boolean addDealer(Dealer dealer) throws Exception {
+        String sql = "insert into company " +
+                "(dealerCode, dealerName, director, phone, sampleDate, sampleType, dealerAddress, sampleRemake) " +
+                "values (?,?,?,?,?,?,?,?)";
+        this.pStatement = this.connection.prepareStatement(sql);
+        this.pStatement.setString(1, dealer.dealerCode);
+        this.pStatement.setString(2, dealer.dealerName);
+        this.pStatement.setString(3, dealer.director);
+        this.pStatement.setString(4, dealer.phone);
+        java.sql.Date sqlDate = new java.sql.Date(dealer.sampleDate.getTime());
+        this.pStatement.setDate(5, sqlDate);
+        this.pStatement.setInt(6, dealer.sampleType);
+        this.pStatement.setString(7, dealer.dealerAddress);
+        this.pStatement.setString(8, dealer.sampleRemake);
+//        sql = "insert into users (name, pwd, email) values ( 'zhangqi', 'taoyali', null)";
+        return this.pStatement.executeUpdate() > 0;
+    }
+
 }
