@@ -2,7 +2,7 @@ package servlet;
 
 import com.alibaba.fastjson.JSONObject;
 import util.*;
-import DB.DBManageUserOperation;
+import DB.ManageUserOperation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,7 +46,7 @@ public class RegistServlet extends HttpServlet {
                 return;
             }
 
-            DBManageUserOperation dbManageUserOperation = new DBManageUserOperation();
+            ManageUserOperation dbManageUserOperation = new ManageUserOperation();
             String registStatus = new String();
             Boolean status = false;
             try {

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Dealer implements DAOCallBack {
     // 代理商代码
-    public String id;
+    public int id;
     // 代理商代码
     public String dealerCode;
     // 代理商名称
@@ -33,14 +33,17 @@ public class Dealer implements DAOCallBack {
         List<Dealer> dealers = new ArrayList<Dealer>();
         while (resultSet.next()) {
             Dealer order = new Dealer();
-//            manageUser.setId(resultSet.getInt(1));
-//            manageUser.setName(resultSet.getNString(1));
-//            manageUser.setName(resultSet.getString("name"));
-//            manageUser.setPwd(resultSet.getNString(2));
-//            manageUser.setPhone(resultSet.getString("phone"));
-//            manageUser.setPwd(resultSet.getString("pwd"));
+            order.id = resultSet.getInt("id");
+            order.dealerCode = resultSet.getNString("dealerCode");
+            order.dealerName = resultSet.getString("dealerName");
+            order.director = resultSet.getNString("director");
+            java.sql.Date sqlDate = resultSet.getDate("sampleDate");
+            order.sampleDate = new java.util.Date(sqlDate.getTime());
+            order.phone = resultSet.getString("phone");
+            order.sampleType = resultSet.getInt("sampleType");
+            order.dealerAddress = resultSet.getString("dealerAddress");
+            order.sampleRemake = resultSet.getString("sampleRemake");
             dealers.add(order);
-            break;
         }
         return dealers;
     }

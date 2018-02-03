@@ -1,9 +1,10 @@
 package servlet;
 
 import DAO.Dealer;
-import DB.DBManageUserOperation;
+import DB.DealerOperation;
 import com.alibaba.fastjson.JSONObject;
 import util.*;
+import util.Error;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,6 @@ import java.util.Date;
 import java.util.List;
 
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.sym.error;
-import static util.NetStatus.NetStatusType.NetStatusTypeError;
 
 /**
  * Created by taoyali on 2018/2/1.
@@ -51,14 +51,36 @@ public class DealerServlet extends HttpServlet {
 
     private void query(HttpServletRequest request, HttpServletResponse response) {
         // TODO Auto-generated method stub
-        System.out.println("query");
+        try {
+//            JSONObject jsonObject = FromJson.
+            JSONObject jsonObject = FromJson.getJsonObject(request);
+
+            int pageIndex = jsonObject.getInteger("pageIndex");
+            int pageSise = jsonObject.getInteger("pageSise");
+
+            DealerOperation queryDealer = new DealerOperation();
+            String registStatus = new String();
+            Boolean status = false;
+            try {
+                List dealers = queryDealer.query(pageIndex, pageSise, new Dealer());
+                if (dealers.size() > 0) {
+                    registStatus = "代理商个数：" + dealers.size();
+                } else  {
+                    registStatus = "暂无代理商";
+                }
+                ResponseJsonUtils.json(response, dealers);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            System.out.print(e);
+            e.printStackTrace();
+        }
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) {
         // TODO Auto-generated method stub
-        System.out.println("add");
         try {
-//            JSONObject jsonObject = FromJson.
             String json = FromJson.getRequestJsonString(request);
             Dealer dealer = FromJson.StringToEntity(json, Dealer.class);//json字符串转换成jsonobject对象(request);
             System.out.print(dealer);
@@ -67,21 +89,16 @@ public class DealerServlet extends HttpServlet {
                     || dealer.director.length() <= 0 || dealer.phone.length() <= 0
                     || dealer.dealerAddress.length() <= 0 || dealer.sampleRemake.length() <= 0
                     || dealer.sampleType < 0) {
-                TYLError error = new TYLError();
-                error.errorCode = "1234";
-                error.errorInfo = "参数错误";
-                error.errorType = TYLError.ErrorType.ErrorParameter;
-                NetStatus status = new NetStatus();
-                status.error = error;
-                status.status = NetStatusTypeError;
-                ResponseJsonUtils.json(response, status);
+
+                NetStatus error = Error.error();
+                ResponseJsonUtils.json(response, error);
                 return;
             }
-            DBManageUserOperation dbManageUserOperation = new DBManageUserOperation();
+            DealerOperation addDealer = new DealerOperation();
             String registStatus = new String();
             Boolean status = false;
             try {
-                status = dbManageUserOperation.addDealer(dealer);
+                status = addDealer.add(dealer);
                 if (status) {
                     registStatus = "增加代理商成功";
                 } else  {
@@ -93,7 +110,6 @@ public class DealerServlet extends HttpServlet {
             if (status) {
                 ResponseJsonUtils.json(response, error);
             }
-
         } catch (Exception e) {
             System.out.print(e);
             e.printStackTrace();

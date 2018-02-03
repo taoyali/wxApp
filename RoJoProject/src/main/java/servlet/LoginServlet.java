@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import DAO.ManageUser;
-import DB.DBManageUserOperation;
+import DB.ManageUserOperation;
 
 /**
  * Created by taoyali on 2017/8/27.
@@ -23,7 +23,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         String phone = new String(request.getParameter("name").getBytes("ISO8859-1"),"UTF-8");
         String password = new String(request.getParameter("password").getBytes("ISO8859-1"), "UTF-8");
 
-        DBManageUserOperation dbuse = new DBManageUserOperation();
+        ManageUserOperation dbuse = new ManageUserOperation();
 
         String loginStatus = new String();
         String loginUserInfoString = new String();

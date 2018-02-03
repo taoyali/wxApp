@@ -10,13 +10,11 @@ import java.util.List;
  */
 public class Order implements DAOCallBack {
     // 订单id
-    public String id;
+    public int id;
     // 客户名称
     public String customName;
     // 产品名称
     public String productName;
-    // 代理商负责人
-    public String director;
     // 客户联系号码
     public String phone;
     // 安装时间
@@ -31,20 +29,37 @@ public class Order implements DAOCallBack {
     public float scaleboardWidth;
     // 衬板高度
     public float scaleboardHeight;
+    // 商品个数
+    public int count;
+    // 总价
+    public float totalPrice;
+    // 外键商品
+    public int dealer_id;
+
+    public String dealerName;
+    public String dealerCode;
 
     public List<Order> callBack(ResultSet resultSet) throws Exception {
-        List<Order> managerUsers = new ArrayList<Order>();
+        List<Order> orders = new ArrayList<Order>();
         while (resultSet.next()) {
             Order order = new Order();
-//            manageUser.setId(resultSet.getInt(1));
-//            manageUser.setName(resultSet.getNString(1));
-//            manageUser.setName(resultSet.getString("name"));
-//            manageUser.setPwd(resultSet.getNString(2));
-//            manageUser.setPhone(resultSet.getString("phone"));
-//            manageUser.setPwd(resultSet.getString("pwd"));
-            managerUsers.add(order);
-            break;
+            order.id = resultSet.getInt("id");
+            order.customName = resultSet.getNString("customName");
+            order.productName = resultSet.getNString("productName");
+            order.phone = resultSet.getNString("phone");
+            order.installDate = resultSet.getDate("installDate");
+            order.doorType = resultSet.getInt("doorType");
+            order.address = resultSet.getNString("address");
+            order.remake = resultSet.getNString("remake");
+            order.scaleboardWidth = resultSet.getFloat("scaleboardWidth");
+            order.scaleboardHeight = resultSet.getFloat("scaleboardHeight");
+            order.count = resultSet.getInt("count");
+            order.dealer_id = resultSet.getInt("dealer_id");
+            order.totalPrice = resultSet.getFloat("totalPrice");
+            order.dealerName = resultSet.getString("dealerName");
+            order.dealerCode = resultSet.getString("dealerCode");
+            orders.add(order);
         }
-        return managerUsers;
+        return orders;
     }
 }

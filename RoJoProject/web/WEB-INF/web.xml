@@ -44,7 +44,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>OrderServlet</servlet-name>
-        <url-pattern>/OrderServlet</url-pattern>
+        <url-pattern>*.OrderServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -75,6 +75,8 @@
     </error-page>
 
     <welcome-file-list>
-        <welcome-file>AddDealer.html</welcome-file>
+        <!--<welcome-file>/html/AddDealer.html</welcome-file>-->
+        <welcome-file>/html/addDealer.html</welcome-file>
+        <!--<welcome-file>/html/order.html</welcome-file>-->
     </welcome-file-list>
 </web-app>
