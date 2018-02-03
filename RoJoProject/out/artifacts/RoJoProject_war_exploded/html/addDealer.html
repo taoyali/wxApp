@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加订单</title>
+    <style>
+        .formList {
+            alignment: center;
+            width: 250px;
+        }
+        label {
+            width:100px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #eee;
+            font-size: 12px;
+        }
+        input {
+            display: block;
+            text-align: center;
+            width:150px;
+            height: 40px;
+            border: 1px solid #eee;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<form id="formList">
+
+</form>
+
+<script>
+    var headers = ["经销商代码", "经销商名称", "负责人", "联系电话", "上样时间", "样品类型", "地址", "备注"];
+    var html = '';
+    for (let title of headers) {
+        html += '<label>' + title + '</label>' + '<input type="text"></input>' + '\n';
+    }
+    var form = document.getElementById("formList");
+    form.innerHTML = html;
+</script>
+
+</body>
+</html>
