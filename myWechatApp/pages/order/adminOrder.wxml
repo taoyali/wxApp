@@ -24,7 +24,7 @@
   <view class="page__bd">
     <view class="section">
       <scroll-view class="homelist" scroll-y="true" style="height: 450px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-      <view wx:for="{{xxx}}" class="section" data-sid="{{item.id}}">
+      <view wx:for="{{adminOrders}}" class="section" data-sid="{{item.id}}">
         <template is="scrollviewcell" data="{{ ...item }}" />
       </view>
       </scroll-view>
@@ -43,15 +43,17 @@
 
 <template name="scrollviewcell">
   <!-- <navigator url="./adminOrderDetail?id={{id}}&pic={{pic}}&title={{title}}" class="detail"> -->
-  <navigator url="./adminOrderDetail?name={{title}}" class="detail">
-    <view class="cellTopContent">
-      <text class='companyView' >{{ title }}</text>
-      <button class='statusView'>已付款</button>
-    </view>
-    <view class="cellBottomContent">
-      <text class="">{{ id }}</text>
-      <text class="articletime">{{ title }}</text>
-      <text class="articletime">{{ pic }}</text>
-    </view>
+  <navigator url="./adminOrderDetail?orderDetail={{title}}" class="cellDetail">
+      <view class='cellTopContent'>
+        <text class='cellTopLeft'> {{dealerName}} </text> 
+        <text class='cellTopRight' wx:if="{{status==1}}">已付款</text>
+        <text class='cellTopRight' wx:elif="{{status==2}}">未付款</text>
+      </view>
+      <view class='cellBottomContent'>
+        <text class='cellBottomLeft'> {{count}} 个 {{productName}} </text>
+        <text class='cellBottomRight'> {{installTime}} 安装 </text>
+        <!-- 商品数量: <text> {{count}} </text>
+      商品名称: <text> {{}} </text> -->
+      </view>
   </navigator>
 </template>

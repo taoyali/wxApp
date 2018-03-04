@@ -1,0 +1,24 @@
+<view>
+
+<view style='height:40rpx'></view>
+
+<view class='orderDetailText'> 经销商代码: {{dealer.dealerCode}}</view>
+
+<view class='orderDetailText'> 经销商名称: {{dealer.dealerName}}</view>
+
+<view class='orderDetailText'> 负责人: {{adminOrderDetail.director}}</view>
+
+<view class='orderDetailText'> 手机号: {{adminOrderDetail.phone}}</view>
+
+<view class='orderDetailText'> 上样时间: {{adminOrderDetail.sampleDate}}</view>
+
+<view class='orderDetailText'> 样品类型: {{adminOrderDetail.sampleType}}</view>
+
+<view class='orderDetailText'> 经销商地址: {{adminOrderDetail.dealerAddress}}</view>
+
+<view style='display: flex; flex-direction: row'>
+  <text class='orderDetailText'>备注: </text>
+  <text class='orderDetailTextView'> {{adminOrderDetail.sampleRemake}}</text>
+</view>
+
+</view>

@@ -4,8 +4,8 @@
 </image>
 </view>
 <view class='loginform'>
-  <input class="phoneNumber loginInput loginFormItem" type="number" bindchange="bindchangeInput" id="phoneNumber" placeholder='{{phoneNumberPlaceHolder}}' />
-  <input class="loginInput loginFormItem" bindchange="bindchangeInput" placeholder='{{passWordPlaceHolder}}' password='true' />
+  <input class="phoneNumber loginInput loginFormItem" type="number" bindchange="bindchangeInput" id="phoneNumber" placeholder='{{phoneNumberPlaceHolder}}' value='{{userIphone}}' />
+  <input class="loginInput loginFormItem" bindchange="bindchangeInput" placeholder='{{passWordPlaceHolder}}' password='true' value='{{userPwd}}' />
   <button class='loginButton loginFormItem' bindtap='loginAction' >{{loginButtonText}}</button>
 </view>
 </view>

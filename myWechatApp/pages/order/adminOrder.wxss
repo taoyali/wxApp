@@ -1,28 +1,66 @@
 
-
-
 .homelist{
   width:100%;
   white-space: nowrap;
-  font-size:15px;
+  font-size:15rpx;
   position: fixed;
   top: 0;
   z-index:1;
-background-color: #f67300;
+  background-color: white;
 }
 
+.cellDetail{
+  border-bottom: 1rpx solid #ccc;
+}
 .cellTopContent{
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: row;
   width:100%;
+  height: 70rpx;
   position:relative;
-  top: 0px;
-  background-color: #f6f6f6;
+  align-items: center;  
+}
+
+.cellTopLeft{
+  text-align: left;
+  width: 70%;
+  font-family: "黑体";
+  color: #000;
+  font-size: 30rpx;
+  margin-left: 20rpx; 
+}
+.cellTopRight{
+  text-align: right;
+  font-family: "楷体";
+  color: #fff;
+  background-color: #00a0ac;
+  font-size: 30rpx;
+  margin-right: 0rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
 }
 .cellBottomContent{
-  width: 100%;
-  position:relative;
-  top: 0px;
-  bottom:0px;
-  /*background-color: #334422;*/
+  height: 50rpx;
+  background-color: #f6f6f6;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center
+}
+.cellBottomLeft{
+  font-size: 25rpx;
+  text-align: left;
+  width: 50%;
+  margin-left: 20rpx;
+}
+.cellBottomRight{
+  font-size: 25rpx;
+  text-align: right;
+  width: 50%;
+  margin-right: 20rpx;
 }
 .articletitle{
   margin: 0px;

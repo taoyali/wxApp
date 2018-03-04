@@ -5,6 +5,9 @@
     "pages/order/adminOrderDetail",
     "pages/index/index",
     "pages/index/mainPage/mainPage",
+    "pages/dealer/dealerList",
+    "pages/dealer/dealer",
+    "pages/dealer/addDealer",
     "pages/logs/logs"
   ],
   "window":{
@@ -12,5 +15,22 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar":{
+    "backgroundColor": "#00a0ac",
+    "list": [
+      {
+        "pagePath":"pages/order/adminOrder",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/dealer/dealerList",
+        "text": "代理商"
+      },
+      {
+        "pagePath": "pages/index/mainPage/mainPage",
+        "text": "我的"
+      }
+    ]
   }
 }
