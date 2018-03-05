@@ -12,7 +12,7 @@
 //            postRequest("http://localhost:9999/RegistServlet", data);
 //            var hash = hex_md5(data);
 //            var hash = hex_md5(data);
-            axios.post('http://localhost:9999/add.DealerServlet', data)
+            axios.post('http://localhost:8080/add.DealerServlet', data)
                     .then(function (response) {
                         if (response.status == 200) {
                             alert("成功");
@@ -33,7 +33,7 @@
 //            postRequest("http://localhost:9999/RegistServlet", data);
 //            var hash = hex_md5(data);
 //            var hash = hex_md5(data);
-            axios.post('http://localhost:9999/query.DealerServlet', data)
+            axios.post('http://localhost:8080/query.DealerServlet', data)
                 .then(function (response) {
                     if (response.status == 200) {
                         var headers = ["经销商id", "经销商代码", "经销商名称", "负责人", "联系电话", "上样时间", "样品类型", "地址", "备注"];

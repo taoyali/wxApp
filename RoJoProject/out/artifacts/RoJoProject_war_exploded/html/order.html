@@ -4,38 +4,19 @@
     <meta charset="UTF-8">
     <title>order</title>
     <link rel="stylesheet" href="../css/table.css">
-    <script type="text/javascript" src="../js/createTable.js"></script>
     <script type="text/javascript" src="../js/axios.min.js"></script>
+    <script type="text/javascript" src="../js/createTable.js"></script>
     <script>
-        function addOrder() {
-            var data = {customName: "customName", productName: "productName", phone: "13645455612", doorType: 1,
-                address: "address", remake: "remake", scaleboardWidth: 50, scaleboardHeight: 100, totalPrice: 1000, count: 2, dealer_id: 2};
-//            postRequest("http://localhost:9999/RegistServlet", data);
-//            var hash = hex_md5(data);
-//            var hash = hex_md5(data);
-            axios.post('http://localhost:9999/add.OrderServlet', data)
-                .then(function (response) {
-                    if (response.status == 200) {
-                        alert("成功");
-                        alert(response);
-                    } else  {
-                        alert("失败");
-                        alert(response.errorCode);
-                        alert(response.error);
-                    }
-                })
-                .catch(function (error) {
-                    alert(error);
-                });
-        }
-
         function queryAllOrder() {
-            var data = {pageIndex:10, pageSise:100};
-//            postRequest("http://localhost:9999/RegistServlet", data);
+
+            var username = document.cookie.valueOf(USER_INFO_LOGIN_NAME)
+            var userpwd = sessionStorage.valueOf(USER_INFO_USER_PWD)
+            var data = {pageIndex:10, pageSise:100, USER_INFO_LOGIN_NAME:username, USER_INFO_USER_PWD:userpwd};
+//            postRequest("http://localhost:8080/RegistServlet", data);
 //            var hash = hex_md5(data);
 //            var hash = hex_md5(data);
 
-            axios.post('http://localhost:9999/query.OrderServlet', data)
+            axios.post('http://localhost:8080/query.OrderServlet', data)
                 .then(function (response) {
                     if (response.status == 200) {
                         var headers = ["订单id", "客户名称", "商品名称", "联系电话", "安装时间", "门类型", "数量", "商品总额", "衬板宽", "衬板高", "地址", "备注", "删除"];

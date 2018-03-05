@@ -9,7 +9,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/MyLogin</url-pattern>
+        <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>HttpHeaderServlet</servlet-name>
@@ -75,8 +75,10 @@
     </error-page>
 
     <welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
         <!--<welcome-file>/html/AddDealer.html</welcome-file>-->
-        <welcome-file>/html/addDealer.html</welcome-file>
+        <!--<welcome-file>/html/addDealer.html</welcome-file>-->
         <!--<welcome-file>/html/order.html</welcome-file>-->
+        <!--<welcome-file>/html/login_regist/regist.jsp</welcome-file>-->
     </welcome-file-list>
 </web-app>
