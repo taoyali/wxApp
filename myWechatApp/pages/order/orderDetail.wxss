@@ -1,4 +1,4 @@
-/* pages/order/adminOrderDetail.wxss */
+/* pages/order/orderDetail.wxss */
 .orderDetailText{
     height: 90rpx;
     font-size:30rpx; 

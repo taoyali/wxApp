@@ -1,28 +1,22 @@
-<view class="dealerList">
-
-<view class="page">
-  <view class="page__bd">
-    <view class="section">
-      <scroll-view class="homelist" scroll-y="true" style="height: 450px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-      <view wx:for="{{dealers}}" class="section" data-sid="{{item.id}}">
+<view>
+  <view class="section"> 
+    <scroll-view class="homelist" scroll-y style="height: 90%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+       <view wx:for="{{dealers}}" class="section" data-sid="{{item.id}}">
         <template is="scrollviewcell" data="{{ ...item }}" />
-      </view>
-      </scroll-view>
-    </view>
-  </view>
-</view>
+      </view> 
+    </scroll-view>
+   </view>   
 
-<view class='bottomView'>
-  <button bindtap='addDealer'> 添加代理商 </button>
-</view>
+  <button class="bottomView" bindtap="addDealer"> 添加代理商 </button>
 
-</view>
-
-<template name="scrollviewcell">
-  <!-- <navigator url="./adminOrderDetail?id={{id}}&pic={{pic}}&title={{title}}" class="detail"> -->
-  <navigator url="./dealer?dealer={{dealerName}}" class="cellDetail">
-      <view class='cellContent'>{{dealerCode}}</view>
+  <template name="scrollviewcell">
+  <!-- <navigator url="./orderDetail?id={{id}}&pic={{pic}}&title={{title}}" class="detail"> -->
+    <navigator url="./dealer?dealer={{dealerName}}" class="cellDetail">
+      <view class='cellContent'>{{dealerCode}}111</view>
       <view class='cellContent'>{{dealerName}}</view>
       <view class='cellContent'>{{director}}</view> 
-  </navigator>
-</template>
+    </navigator>
+  </template>
+
+</view>
+

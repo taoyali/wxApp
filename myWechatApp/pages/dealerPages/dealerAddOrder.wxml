@@ -1,0 +1,63 @@
+<view>
+  <view class='contentView'>
+    <p class="textName">客户姓名：</p>
+    <input class='inputText'></input>
+  </view>
+
+  <view class='contentView'>
+    <p class="textName">客户手机：</p>
+    <input class='inputText'></input>
+  </view>
+
+  <view class='contentView'>
+    <p class="textName">商品名称：</p>
+    <picker class='inputText' bindchange="bindPickerChange" value="{{goodIndex}}" range="{{goodNames}}">  
+      <view class="picker">  
+        {{goodNames[goodIndex]}}  
+      </view>  
+    </picker> 
+  </view>
+
+  <view class='contentView'>
+    <p class="textName">商品数量：</p>
+    <input class='goodNum'>1</input>
+  </view>
+
+  <view class='contentView'>
+    <p class="textName">商品单价：</p>
+    <text class='goodPrice'> {{goodPrices[goodIndex]}} </text>
+  </view>
+
+  <view class='contentView'>
+    <p class="textName">安装时间：</p>
+    <input class='inputText'></input>
+  </view>
+
+  <view class='contentView'>
+    <p class="textName">门类型：</p>
+    <input class='inputText'></input>
+  </view>
+
+  <view class='contentView'>
+    <p class="textName">衬板宽度：</p>
+    <input class='inputText'></input>
+  </view>
+
+  <view class='contentView'>
+    <p class="textName">衬板高度：</p>
+    <input class='inputText'></input>
+  </view>
+
+  <view class='contentView'>
+    <p class="textName">客户地址：</p>
+    <input class='inputText'></input>
+  </view>
+
+  <view class='contentView'>
+    <p class="textName">备注：</p>
+  </view>
+
+  <view class='contentView'>
+    <textarea class='remarkArea'></textarea>
+  </view>
+</view>

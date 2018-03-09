@@ -1,0 +1,30 @@
+<view>
+
+<view style='height:40rpx'></view>
+
+<view class='orderDetailText'> 经销商代码 : {{orderDetail.dealerCode}}</view>
+
+<view class='orderDetailText'> 经销商名称 : {{orderDetail.dealerName}}</view>
+
+<view class='orderDetailText'> 客户姓名 : {{orderDetail.customName}}</view>
+
+<view class='orderDetailText'> 客户手机 : {{orderDetail.customPhoneNumber}}</view>
+
+<view class='orderDetailText'> 商品名称 : {{orderDetail.productName}}</view>
+
+<view class='orderDetailText'> 安装时间 : {{orderDetail.installTime}}</view>
+
+<view class='orderDetailText'> 门类型 : {{orderDetail.doorType}}</view>
+
+<view class='orderDetailText'> 衬板宽度 : {{orderDetail.scaleboardWidth}}</view>
+
+<view class='orderDetailText'> 衬板高度 : {{orderDetail.scaleboardHeight}}</view>
+
+<view class='orderDetailText'> 客户地址 : {{orderDetail.address}}</view>
+
+<view style='display: flex; flex-direction: row'>
+  <text class='orderDetailText'>备注: </text>
+  <text class='orderDetailTextView'> {{orderDetail.remake}}</text>
+</view>
+
+</view>

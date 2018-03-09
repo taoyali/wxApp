@@ -26,7 +26,55 @@ Page({
       dealerAddress: '上天 入海',
       // 安装时间
       sampleRemake: "及时送货， 安装",
-    },
+      },
+      {
+        // 经销商名称：
+        dealerCode: "经销商3 code",
+        dealerName: "杭州天鑫五金建材有限公司",
+        director: "客户名称",
+        phone: "13645527410",
+        sampleDate: "上样时间",
+        sampleType: '样品类型',
+        dealerAddress: '上天 入海',
+        // 安装时间
+        sampleRemake: "及时送货， 安装",
+      }, 
+      {
+        // 经销商名称：
+        dealerCode: "经销商4 code",
+        dealerName: "杭州天鑫五金建材有限公司",
+        director: "客户名称",
+        phone: "13645527410",
+        sampleDate: "上样时间",
+        sampleType: '样品类型',
+        dealerAddress: '上天 入海',
+        // 安装时间
+        sampleRemake: "及时送货， 安装",
+      },
+      {
+        // 经销商名称：
+        dealerCode: "经销商5 code",
+        dealerName: "杭州天鑫五金建材有限公司",
+        director: "客户名称",
+        phone: "13645527410",
+        sampleDate: "上样时间",
+        sampleType: '样品类型',
+        dealerAddress: '上天 入海',
+        // 安装时间
+        sampleRemake: "及时送货， 安装",
+      }, 
+      {
+        // 经销商名称：
+        dealerCode: "经销商6 code",
+        dealerName: "杭州天鑫五金建材有限公司",
+        director: "客户名称",
+        phone: "13645527410",
+        sampleDate: "上样时间",
+        sampleType: '样品类型',
+        dealerAddress: '上天 入海',
+        // 安装时间
+        sampleRemake: "及时送货， 安装",
+      },
     ],
   },
 

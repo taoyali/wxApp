@@ -23,23 +23,20 @@
 
 .cellTopLeft{
   text-align: left;
-  width: 70%;
+  width: 80%;
   font-family: "黑体";
   color: #000;
   font-size: 30rpx;
   margin-left: 20rpx; 
 }
 .cellTopRight{
-  text-align: right;
-  font-family: "楷体";
-  color: #fff;
-  background-color: #00a0ac;
-  font-size: 30rpx;
-  margin-right: 0rpx;
-  padding-left: 10rpx;
-  padding-right: 10rpx;
+  font-family:"楷体";
+  color:#fff;
+  background-color:#00a0ac;
+  font-size:25rpx;
+  padding-left:10rpx;
+  padding-right:10rpx;
 }
-
 .cellBottomContent{
   height: 50rpx;
   background-color: #f6f6f6;
@@ -59,4 +56,17 @@
   text-align: right;
   width: 50%;
   margin-right: 20rpx;
+}
+.bottomView {
+  width: 90%;
+  font-size: 35rpx;
+  background-color: #00a0ac;
+  color: #fff;
+  position: fixed;
+  bottom: 15rpx;
+  height: 2.0;
+  line-height: 2.0;
+  margin: 0 30rpx 0 30rpx;
+  align-items: center;
+  text-align: center;
 }

@@ -2,12 +2,15 @@
   "pages":[
     "pages/login/login",
     "pages/order/adminOrder",
-    "pages/order/adminOrderDetail",
+    "pages/order/orderDetail",
     "pages/index/index",
     "pages/index/mainPage/mainPage",
     "pages/dealer/dealerList",
     "pages/dealer/dealer",
     "pages/dealer/addDealer",
+    "pages/dealerPages/dealerOrderList",
+    "pages/dealerPages/dealerAddOrder",
+    "pages/dealerPages/dealerOrderDetail",
     "pages/logs/logs"
   ],
   "window":{
@@ -18,10 +21,11 @@
   },
   "tabBar":{
     "backgroundColor": "#00a0ac",
+    "color": "#fff",
     "list": [
       {
         "pagePath":"pages/order/adminOrder",
-        "text": "订单"
+        "text": "订单"        
       },
       {
         "pagePath": "pages/dealer/dealerList",

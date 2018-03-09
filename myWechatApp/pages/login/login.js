@@ -17,20 +17,25 @@ Page({
       console.log("判断登录");
     }
 
+    // wx.navigateTo({
+    //   url: '../dealerPages/dealerOrderList'
+    // })
+
     wx.switchTab({
       url: '../order/adminOrder'
     })
+
     // wx.navigateTo({
 
     //   url: '../order/adminOrder', 
 
-    //   // url: '../order/adminOrderDetail?name=' + 'good'.replace(/&/g, ''), 
+    //   // url: '../order/orderDetail?name=' + 'good'.replace(/&/g, ''), 
 
     //   // url: '../order/adminOrder',
     //   // if (this.data.phoneNumberPlaceHolder) {
-    //   //   url: '../order/adminOrderDetail?name=' + this.data.phoneNumberPlaceHolder,
+    //   //   url: '../order/orderDetail?name=' + this.data.phoneNumberPlaceHolder,
     //   // } else {
-    //   //   url: '../order/adminOrderDetail?name=' + 'error',
+    //   //   url: '../order/orderDetail?name=' + 'error',
     //   // }      
     // })
   },

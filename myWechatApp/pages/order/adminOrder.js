@@ -16,27 +16,27 @@ Page({
   data: {
     adminOrders: [
       {
-      // 经销商名称：
-      dealerCode: "经销商1 code",
-      dealerName: "杭州天鑫五金建材有限公司",
-      customName: "客户名称",
-      customPhoneNumber: "13645527410",
-      productName: "H103锁",
-      count: '5',
-      productTotalPrice: '1000',
-      // 安装时间
-      installTime: "time",
-      // 下单时间
-      orderTime: "time",
-      doorType: '门类型',
-      // 衬板宽、高
-      scaleboardWidth: "50",
-      scaleboardHeight: "50",
-      address: "顾客地址",
-      // 备注：
-      remake: "及时送货， 安装",
-      status: 2,
-    },
+        // 经销商名称：
+        dealerCode: "经销商1 code",
+        dealerName: "杭州天鑫五金建材有限公司",
+        customName: "客户名称",
+        customPhoneNumber: "13645527410",
+        productName: "H103锁",
+        count: '5',
+        productTotalPrice: '1000',
+        // 安装时间
+        installTime: "time",
+        // 下单时间
+        orderTime: "time",
+        doorType: '门类型',
+        // 衬板宽、高
+        scaleboardWidth: "50",
+        scaleboardHeight: "50",
+        address: "顾客地址",
+        // 备注：
+        remake: "及时送货， 安装",
+        status: 2,
+      },
       {
         // 经销商名称：
         dealerCode: "经销商2 code",
@@ -90,7 +90,7 @@ Page({
   // key 表示数据名称，_type 数据类型，callback 表示请求成功的回调函数
   // 回调函数的的参数，用于携带请求得到的数据
   loadScrollImages: function (key, _type, callback) {
-    
+
     wx.request({
       url: 'https://api.wxappclub.com/get',
       data: {
@@ -126,17 +126,15 @@ Page({
   //   listCompment.next(); //加载下一页
   // },
 
-  loginAction: function () {
-    if (true) {
-      console.log("判断登录");
-    }
+  orderDetail: function (e) {
+    idT = e.currentTarget.id,
+    strinhh = JSON.stringify(e.data),
     wx.navigateTo({
-      url: '../order/adminOrderDetail?name=' + 'good'.replace(/&/g, ''),     
+      url: '../order/orderDetail?orderDetail=' + JSON.stringify(e.data),
     })
   },
 
-
-// 技术文章：http://p.codekk.com/detail/Android/hss01248/wxListview
+  // 技术文章：http://p.codekk.com/detail/Android/hss01248/wxListview
   onShow: function () {
     console.log('App Show')
     // wx.showToast({
@@ -153,11 +151,11 @@ Page({
       method: 'GET'.toUpperCase(),
       success: function (res) {
         wx.hideLoading(),
-        wx.showToast({
-          title: '成功',
-          icon: 'success',
-          duration: 2000
-        })
+          wx.showToast({
+            title: '成功',
+            icon: 'success',
+            duration: 2000
+          })
         that.setData({
           xxx: res.data.data.list
         })

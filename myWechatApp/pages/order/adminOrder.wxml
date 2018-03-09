@@ -3,13 +3,10 @@
     加载中...
 </loading> -->
 
-
 <!-- <view wx:for="{{adminOrders}}">
   <view> {{index}}: </view>
   <view> {{item.distributorCode}}: </view>
 </view>  -->
-
-
 
 <!-- <scroll-view>
 <view wx:for="{{swiperData}}">
@@ -18,32 +15,22 @@
 </view>
 </scroll-view> -->
 
-
-
 <view class="page">
   <view class="page__bd">
     <view class="section">
       <scroll-view class="homelist" scroll-y="true" style="height: 450px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-      <view wx:for="{{adminOrders}}" class="section" data-sid="{{item.id}}">
-        <template is="scrollviewcell" data="{{ ...item }}" />
+      <view wx:for="{{adminOrders}}" class="section" data-sid="{{item.id}}" bindtap='orderDetail' id="{{item.id}}">
+        <template is="scrollviewcell" data="{{ ...item, index:thisIndex }}" />
       </view>
       </scroll-view>
     </view>
   </view>
 </view>
-
-
-
-
-
-
-
-
 </view>
 
 <template name="scrollviewcell">
-  <!-- <navigator url="./adminOrderDetail?id={{id}}&pic={{pic}}&title={{title}}" class="detail"> -->
-  <navigator url="./adminOrderDetail?orderDetail={{title}}" class="cellDetail">
+  <view>
+  <!-- <navigator url= "./orderDetail?orderDetail={{JSON.stringify(data)}}" class="cellDetail"> -->
       <view class='cellTopContent'>
         <text class='cellTopLeft'> {{dealerName}} </text> 
         <text class='cellTopRight' wx:if="{{status==1}}">已付款</text>
@@ -55,5 +42,6 @@
         <!-- 商品数量: <text> {{count}} </text>
       商品名称: <text> {{}} </text> -->
       </view>
-  </navigator>
+  <!-- </navigator> -->
+  </view>
 </template>

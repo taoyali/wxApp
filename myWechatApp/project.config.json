@@ -20,9 +20,36 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
-			"current": -1,
+		"game": {
 			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "addDealer",
+					"pathName": "pages/dealer/addDealer",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "addDealer",
+					"pathName": "pages/dealerPages/dealerAddOrder",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "addDealer",
+					"pathName": "pages/dealerPages/dealerOrderList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login"
+				}
+			]
 		}
 	}
 }

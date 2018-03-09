@@ -1,0 +1,45 @@
+.contentView {
+  width: 100%;
+  height: 90rpx;
+  display:flex;/*Flex布局*/
+  display: -webkit-flex; /* Safari */
+  align-items:center;/*指定垂直居中*/
+}
+
+.textName {
+  margin-left: 20rpx; 
+  font-size:30rpx;
+  float:left;
+  text-align: center;
+  height: 50rpx;
+}
+
+.inputText {
+  height: 50rpx;
+  text-align: left;
+  /* background-color: red; */
+  float:left;
+  border-bottom: 1px solid gray; 
+  margin: 10rpx 0rpx 10rpx 30rpx;
+}
+
+.goodPrice {
+  margin: 10rpx 0rpx 10rpx 30rpx;
+  text-align: center;
+  color: gray
+}
+
+.goodNum {
+  margin: 10rpx 0rpx 10rpx 30rpx;
+  text-align: center;
+  border: 1px solid gray;
+  width: 100rpx 
+}
+
+.remarkArea {
+  margin-top: -20rpx;
+  margin-left: 80rpx;
+  height: 80rpx;
+  border: 1px solid gray;
+  border-radius: 5px
+}

@@ -1,3 +1,45 @@
 <view>
 
+<view style='height:40rpx'></view>
+
+<view class='textView'>
+  <text class='orderDetailText'> 经销商代码: </text>
+  <input class='textInput' name="dealerCoder"></input>
+</view>
+
+<view class='textView'>
+  <text class='orderDetailText'> 经销商名称: </text>
+  <input class='textInput' name="dealerName"></input>
+</view>
+
+<view class='textView'>
+  <view class='orderDetailText'> 负责人: </view>
+  <input class='textInput' name="dealerPerson"></input>
+</view>
+
+<view class='textView'>
+  <view class='orderDetailText'> 手机号: </view>
+  <input class='textInput' name="dealerIphone"></input>
+</view>
+
+<view class='textView'>
+  <view class='orderDetailText'> 上样时间: </view>
+  <input class='textInput' name="installTime"></input>
+</view>
+
+<view class='textView'>
+  <view class='orderDetailText'> 样品类型: </view>
+  <input class='textInput' name="sampleType"></input>
+</view>
+
+<view class='textView'>
+  <view class='orderDetailText'> 经销商地址: </view>
+  <input class='textInput' name="dealerAddress"></input>
+</view>
+
+<view style='display: flex; flex-direction: row'>
+  <text class='orderDetailText'>备注: </text>
+  <textarea class='orderDetailTextView' name="sampleRemake" maxlength='500'> </textarea>
+</view>
+
 </view>
