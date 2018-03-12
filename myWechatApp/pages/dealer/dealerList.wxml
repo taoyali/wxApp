@@ -2,7 +2,12 @@
   <view class="section"> 
     <scroll-view class="homelist" scroll-y style="height: 90%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
        <view wx:for="{{dealers}}" class="section" data-sid="{{item.id}}">
-        <template is="scrollviewcell" data="{{ ...item }}" />
+        <!-- <template is="scrollviewcell" data="{{item }}" /> -->
+        <view class="cellDetail" bindtap='dealerDetail' data-index="{{index}}">
+          <view class='cellContent'>{{item.dealerCode}}</view>
+          <view class='cellContent'>{{item.dealerName}}</view>
+          <view class='cellContent'>{{item.director}}</view> 
+        </view>
       </view> 
     </scroll-view>
    </view>   
@@ -12,7 +17,7 @@
   <template name="scrollviewcell">
   <!-- <navigator url="./orderDetail?id={{id}}&pic={{pic}}&title={{title}}" class="detail"> -->
     <navigator url="./dealer?dealer={{dealerName}}" class="cellDetail">
-      <view class='cellContent'>{{dealerCode}}111</view>
+      <view class='cellContent'>{{dealerCode}}</view>
       <view class='cellContent'>{{dealerName}}</view>
       <view class='cellContent'>{{director}}</view> 
     </navigator>

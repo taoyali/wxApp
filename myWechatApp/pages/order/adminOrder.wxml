@@ -1,47 +1,38 @@
 <view class="adminOrder">
-<!-- <loading hidden="{{loadingView_hidden}}" bindchange="loadingChange">
-    加载中...
-</loading> -->
-
-<!-- <view wx:for="{{adminOrders}}">
-  <view> {{index}}: </view>
-  <view> {{item.distributorCode}}: </view>
-</view>  -->
-
-<!-- <scroll-view>
-<view wx:for="{{swiperData}}">
-  <view> {{index}}: </view>
-  <view> {{item.imgSrc}}: </view>
-</view>
-</scroll-view> -->
-
-<view class="page">
-  <view class="page__bd">
-    <view class="section">
-      <scroll-view class="homelist" scroll-y="true" style="height: 450px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-      <view wx:for="{{adminOrders}}" class="section" data-sid="{{item.id}}" bindtap='orderDetail' id="{{item.id}}">
-        <template is="scrollviewcell" data="{{ ...item, index:thisIndex }}" />
+  <view class="page">
+    <scroll-view class="homelist" scroll-y="true" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <view wx:for="{{adminOrders}}" wx:key="dealerCode" class="section">
+        <!-- <template is="scrollviewcell" data="{{ ...item}}"/> -->
+        <view bindtap='orderDetail' data-index="{{index}}">
+          <view class='cellTopContent'>
+            <text class='cellTopLeft'> {{item.dealerName}} </text>
+            <text class='cellTopRight' wx:if="{{item.status==1}}">已付款</text>
+            <text class='cellTopRight' wx:elif="{{item.status==2}}">未付款</text>
+          </view>
+          <view class='cellBottomContent'>
+            <text class='cellBottomLeft'> {{item.count}} 个 {{item.productName}}                    </text>
+            <text class='cellBottomRight'> {{item.installTime}} 安装 </text>
+          </view>
+        </view>
       </view>
-      </scroll-view>
-    </view>
+    </scroll-view>
   </view>
-</view>
 </view>
 
 <template name="scrollviewcell">
-  <view>
-  <!-- <navigator url= "./orderDetail?orderDetail={{JSON.stringify(data)}}" class="cellDetail"> -->
-      <view class='cellTopContent'>
-        <text class='cellTopLeft'> {{dealerName}} </text> 
-        <text class='cellTopRight' wx:if="{{status==1}}">已付款</text>
-        <text class='cellTopRight' wx:elif="{{status==2}}">未付款</text>
-      </view>
-      <view class='cellBottomContent'>
-        <text class='cellBottomLeft'> {{count}} 个 {{productName}} </text>
-        <text class='cellBottomRight'> {{installTime}} 安装 </text>
-        <!-- 商品数量: <text> {{count}} </text>
+  <view bindtap='orderDetail' data-id="{{index}}">
+    <!-- <navigator url= "./orderDetail?orderDetail={{JSON.stringify(data)}}" class="cellDetail"> -->
+    <view class='cellTopContent'>
+      <text class='cellTopLeft'> {{index}} :  {{dealerName}} </text>
+      <text class='cellTopRight' wx:if="{{status==1}}">已付款</text>
+      <text class='cellTopRight' wx:elif="{{status==2}}">未付款</text>
+    </view>
+    <view class='cellBottomContent'>
+      <text class='cellBottomLeft'> {{count}} 个 {{productName}} </text>
+      <text class='cellBottomRight'> {{installTime}} 安装 </text>
+      <!-- 商品数量: <text> {{count}} </text>
       商品名称: <text> {{}} </text> -->
-      </view>
-  <!-- </navigator> -->
+    </view>
+    <!-- </navigator> -->
   </view>
 </template>

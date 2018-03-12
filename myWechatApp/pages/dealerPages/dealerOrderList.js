@@ -3,7 +3,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    adminOrders: [
+    dealerOrders: [
       {
         // 经销商名称：
         dealerCode: "经销商1 code",
@@ -245,118 +245,22 @@ Page({
         // 备注：
         remake: "及时送货， 安装",
         status: 1,
-      },
-      {
-        // 经销商名称：
-        dealerCode: "经销商2 code",
-        dealerName: "distributorCode",
-        customName: "客户名称",
-        customPhoneNumber: "13645527410",
-        productName: "H104锁",
-        count: '10',
-        productTotalPrice: '1000',
-        // 安装时间
-        installTime: "time",
-        // 下单时间
-        orderTime: "time",
-        doorType: '门类型',
-        // 衬板宽、高
-        scaleboardWidth: "50",
-        scaleboardHeight: "50",
-        address: "顾客地址",
-        // 备注：
-        remake: "及时送货， 安装",
-        status: 1,
-      },
-      {
-        // 经销商名称：
-        dealerCode: "经销商2 code",
-        dealerName: "distributorCode",
-        customName: "客户名称",
-        customPhoneNumber: "13645527410",
-        productName: "H104锁",
-        count: '10',
-        productTotalPrice: '1000',
-        // 安装时间
-        installTime: "time",
-        // 下单时间
-        orderTime: "time",
-        doorType: '门类型',
-        // 衬板宽、高
-        scaleboardWidth: "50",
-        scaleboardHeight: "50",
-        address: "顾客地址",
-        // 备注：
-        remake: "及时送货， 安装",
-        status: 1,
-      },
-      {
-        // 经销商名称：
-        dealerCode: "经销商2 code",
-        dealerName: "distributorCode",
-        customName: "客户名称",
-        customPhoneNumber: "13645527410",
-        productName: "H104锁",
-        count: '10',
-        productTotalPrice: '1000',
-        // 安装时间
-        installTime: "time",
-        // 下单时间
-        orderTime: "time",
-        doorType: '门类型',
-        // 衬板宽、高
-        scaleboardWidth: "50",
-        scaleboardHeight: "50",
-        address: "顾客地址",
-        // 备注：
-        remake: "及时送货， 安装",
-        status: 1,
-      },
-      {
-        // 经销商名称：
-        dealerCode: "经销商2 code",
-        dealerName: "distributorCode",
-        customName: "客户名称",
-        customPhoneNumber: "13645527410",
-        productName: "H104锁",
-        count: '10',
-        productTotalPrice: '1000',
-        // 安装时间
-        installTime: "time",
-        // 下单时间
-        orderTime: "time",
-        doorType: '门类型',
-        // 衬板宽、高
-        scaleboardWidth: "50",
-        scaleboardHeight: "50",
-        address: "顾客地址",
-        // 备注：
-        remake: "及时送货， 安装",
-        status: 1,
-      },
-      {
-        // 经销商名称：
-        dealerCode: "经销商2 code",
-        dealerName: "distributorCode",
-        customName: "客户名称",
-        customPhoneNumber: "13645527410",
-        productName: "H104锁",
-        count: '10',
-        productTotalPrice: '1000',
-        // 安装时间
-        installTime: "time",
-        // 下单时间
-        orderTime: "time",
-        doorType: '门类型',
-        // 衬板宽、高
-        scaleboardWidth: "50",
-        scaleboardHeight: "50",
-        address: "顾客地址",
-        // 备注：
-        remake: "及时送货， 安装",
-        status: 1,
       }
     ],
+  },
+
+  dealerOederDetail: function(e) {
+    var index = e.currentTarget.dataset.index;
+    var item = this.data.dealerOrders[index];
+    var modelString = JSON.stringify(item);
+    try {
+      wx.setStorageSync('orderDetail', item);
+      wx.navigateTo({
+        url: '../order/orderDetail',
+      })
+    } catch (e) {
+
+    }
   },
 
   /**

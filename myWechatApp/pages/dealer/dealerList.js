@@ -77,7 +77,20 @@ Page({
       },
     ],
   },
+  dealerDetail: function(e) {
+    var index = e.currentTarget.dataset.index;
+    var item = this.data.dealers[index];
+    var modelString = JSON.stringify(item);
+    try {
+      wx.setStorageSync('dealerDetail', item);
+      debugger
+      wx.navigateTo({
+        url: '../dealer/dealer',
+      })
+    } catch (e) {
 
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

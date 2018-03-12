@@ -5,16 +5,16 @@ Page({
    */
   data: {
     dealer: {
-      // 经销商名称：
-      dealerCode: "经销商1 code",
-      dealerName: "杭州天鑫五金建材有限公司",
-      director: "客户名称",
-      phone: "13645527410",
-      sampleDate: "上样时间",
-      sampleType: '样品类型',
-      dealerAddress: '上天 入海',
-      // 安装时间
-      sampleRemake: "及时送货， 安装",
+      // // 经销商名称：
+      // dealerCode: "经销商1 code",
+      // dealerName: "杭州天鑫五金建材有限公司",
+      // director: "客户名称",
+      // phone: "13645527410",
+      // sampleDate: "上样时间",
+      // sampleType: '样品类型',
+      // dealerAddress: '上天 入海',
+      // // 安装时间
+      // sampleRemake: "及时送货， 安装",
     }
   },
 
@@ -22,7 +22,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var item = wx.getStorageSync('dealerDetail');
+    this.setData({
+      dealer: item,
+    });
   },
 
   /**

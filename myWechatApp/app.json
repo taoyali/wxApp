@@ -10,7 +10,6 @@
     "pages/dealer/addDealer",
     "pages/dealerPages/dealerOrderList",
     "pages/dealerPages/dealerAddOrder",
-    "pages/dealerPages/dealerOrderDetail",
     "pages/logs/logs"
   ],
   "window":{

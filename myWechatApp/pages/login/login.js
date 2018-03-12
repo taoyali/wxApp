@@ -17,13 +17,13 @@ Page({
       console.log("判断登录");
     }
 
-    // wx.navigateTo({
-    //   url: '../dealerPages/dealerOrderList'
-    // })
-
-    wx.switchTab({
-      url: '../order/adminOrder'
+    wx.navigateTo({
+      url: '../dealerPages/dealerOrderList'
     })
+
+    // wx.switchTab({
+    //   url: '../order/adminOrder'
+    // })
 
     // wx.navigateTo({
 

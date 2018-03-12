@@ -17,6 +17,7 @@ Page({
     adminOrders: [
       {
         // 经销商名称：
+        id:"111",
         dealerCode: "经销商1 code",
         dealerName: "杭州天鑫五金建材有限公司",
         customName: "客户名称",
@@ -39,6 +40,7 @@ Page({
       },
       {
         // 经销商名称：
+        id:"222",
         dealerCode: "经销商2 code",
         dealerName: "distributorCode",
         customName: "客户名称",
@@ -59,7 +61,7 @@ Page({
         remake: "及时送货， 安装",
         status: 1,
       }
-    ],
+    ]
   },
 
   /**
@@ -127,11 +129,17 @@ Page({
   // },
 
   orderDetail: function (e) {
-    idT = e.currentTarget.id,
-    strinhh = JSON.stringify(e.data),
-    wx.navigateTo({
-      url: '../order/orderDetail?orderDetail=' + JSON.stringify(e.data),
-    })
+    var index = e.currentTarget.dataset.index;
+    var item = this.data.adminOrders[index];
+    var modelString = JSON.stringify(item);
+    try {
+      wx.setStorageSync('orderDetail', item);
+      wx.navigateTo({
+        url: '../order/orderDetail',
+      })
+    } catch (e) {
+      
+    }
   },
 
   // 技术文章：http://p.codekk.com/detail/Android/hss01248/wxListview
