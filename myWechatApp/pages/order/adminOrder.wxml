@@ -11,7 +11,7 @@
           </view>
           <view class='cellBottomContent'>
             <text class='cellBottomLeft'> {{item.count}} 个 {{item.productName}}                    </text>
-            <text class='cellBottomRight'> {{item.installTime}} 安装 </text>
+            <text class='cellBottomRight'> {{item.installDate}} 安装 </text>
           </view>
         </view>
       </view>
@@ -29,7 +29,7 @@
     </view>
     <view class='cellBottomContent'>
       <text class='cellBottomLeft'> {{count}} 个 {{productName}} </text>
-      <text class='cellBottomRight'> {{installTime}} 安装 </text>
+      <text class='cellBottomRight'> {{installDate}} 安装 </text>
       <!-- 商品数量: <text> {{count}} </text>
       商品名称: <text> {{}} </text> -->
     </view>

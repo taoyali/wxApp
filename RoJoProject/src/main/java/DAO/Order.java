@@ -44,13 +44,13 @@ public class Order implements DAOCallBack {
         while (resultSet.next()) {
             Order order = new Order();
             order.id = resultSet.getInt("id");
-            order.customName = resultSet.getNString("customName");
-            order.productName = resultSet.getNString("productName");
-            order.phone = resultSet.getNString("phone");
+            order.customName = resultSet.getString("customName");
+            order.productName = resultSet.getString("productName");
+            order.phone = resultSet.getString("phone");
             order.installDate = resultSet.getDate("installDate");
             order.doorType = resultSet.getInt("doorType");
-            order.address = resultSet.getNString("address");
-            order.remake = resultSet.getNString("remake");
+            order.address = resultSet.getString("address");
+            order.remake = resultSet.getString("remake");
             order.scaleboardWidth = resultSet.getFloat("scaleboardWidth");
             order.scaleboardHeight = resultSet.getFloat("scaleboardHeight");
             order.count = resultSet.getInt("count");

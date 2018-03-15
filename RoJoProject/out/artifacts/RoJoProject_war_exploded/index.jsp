@@ -37,7 +37,6 @@
     </script>
   </head>
   <body>
-  <p>  taoyali </p>
 
   <form>
     name: <input type="text" name="name" id="userName" />

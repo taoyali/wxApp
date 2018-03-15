@@ -1,80 +1,83 @@
+var LoadData = require('../../utils/loadData.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    dealers: [{
-      // 经销商名称：
-      dealerCode: "经销商1 code",
-      dealerName: "杭州天鑫五金建材有限公司",
-      director: "客户名称",
-      phone: "13645527410",
-      sampleDate: "上样时间",
-      sampleType: '样品类型',
-      dealerAddress: '上天 入海',
-      // 安装时间
-      sampleRemake: "及时送货， 安装",
-    }, {
-      // 经销商名称：
-      dealerCode: "经销商2 code",
-      dealerName: "杭州天鑫五金建材有限公司",
-      director: "客户名称",
-      phone: "13645527410",
-      sampleDate: "上样时间",
-      sampleType: '样品类型',
-      dealerAddress: '上天 入海',
-      // 安装时间
-      sampleRemake: "及时送货， 安装",
-      },
-      {
-        // 经销商名称：
-        dealerCode: "经销商3 code",
-        dealerName: "杭州天鑫五金建材有限公司",
-        director: "客户名称",
-        phone: "13645527410",
-        sampleDate: "上样时间",
-        sampleType: '样品类型',
-        dealerAddress: '上天 入海',
-        // 安装时间
-        sampleRemake: "及时送货， 安装",
-      }, 
-      {
-        // 经销商名称：
-        dealerCode: "经销商4 code",
-        dealerName: "杭州天鑫五金建材有限公司",
-        director: "客户名称",
-        phone: "13645527410",
-        sampleDate: "上样时间",
-        sampleType: '样品类型',
-        dealerAddress: '上天 入海',
-        // 安装时间
-        sampleRemake: "及时送货， 安装",
-      },
-      {
-        // 经销商名称：
-        dealerCode: "经销商5 code",
-        dealerName: "杭州天鑫五金建材有限公司",
-        director: "客户名称",
-        phone: "13645527410",
-        sampleDate: "上样时间",
-        sampleType: '样品类型',
-        dealerAddress: '上天 入海',
-        // 安装时间
-        sampleRemake: "及时送货， 安装",
-      }, 
-      {
-        // 经销商名称：
-        dealerCode: "经销商6 code",
-        dealerName: "杭州天鑫五金建材有限公司",
-        director: "客户名称",
-        phone: "13645527410",
-        sampleDate: "上样时间",
-        sampleType: '样品类型',
-        dealerAddress: '上天 入海',
-        // 安装时间
-        sampleRemake: "及时送货， 安装",
-      },
+    dealers: [
+    // {
+    //   // 经销商名称：
+    //   dealerCode: "经销商1 code",
+    //   dealerName: "杭州天鑫五金建材有限公司",
+    //   director: "客户名称",
+    //   phone: "13645527410",
+    //   sampleDate: "上样时间",
+    //   sampleType: '样品类型',
+    //   dealerAddress: '上天 入海',
+    //   // 安装时间
+    //   sampleRemake: "及时送货， 安装",
+    // }, {
+    //   // 经销商名称：
+    //   dealerCode: "经销商2 code",
+    //   dealerName: "杭州天鑫五金建材有限公司",
+    //   director: "客户名称",
+    //   phone: "13645527410",
+    //   sampleDate: "上样时间",
+    //   sampleType: '样品类型',
+    //   dealerAddress: '上天 入海',
+    //   // 安装时间
+    //   sampleRemake: "及时送货， 安装",
+    //   },
+    //   {
+    //     // 经销商名称：
+    //     dealerCode: "经销商3 code",
+    //     dealerName: "杭州天鑫五金建材有限公司",
+    //     director: "客户名称",
+    //     phone: "13645527410",
+    //     sampleDate: "上样时间",
+    //     sampleType: '样品类型',
+    //     dealerAddress: '上天 入海',
+    //     // 安装时间
+    //     sampleRemake: "及时送货， 安装",
+    //   }, 
+    //   {
+    //     // 经销商名称：
+    //     dealerCode: "经销商4 code",
+    //     dealerName: "杭州天鑫五金建材有限公司",
+    //     director: "客户名称",
+    //     phone: "13645527410",
+    //     sampleDate: "上样时间",
+    //     sampleType: '样品类型',
+    //     dealerAddress: '上天 入海',
+    //     // 安装时间
+    //     sampleRemake: "及时送货， 安装",
+    //   },
+    //   {
+    //     // 经销商名称：
+    //     dealerCode: "经销商5 code",
+    //     dealerName: "杭州天鑫五金建材有限公司",
+    //     director: "客户名称",
+    //     phone: "13645527410",
+    //     sampleDate: "上样时间",
+    //     sampleType: '样品类型',
+    //     dealerAddress: '上天 入海',
+    //     // 安装时间
+    //     sampleRemake: "及时送货， 安装",
+    //   }, 
+    //   {
+    //     // 经销商名称：
+    //     dealerCode: "经销商6 code",
+    //     dealerName: "杭州天鑫五金建材有限公司",
+    //     director: "客户名称",
+    //     phone: "13645527410",
+    //     sampleDate: "上样时间",
+    //     sampleType: '样品类型',
+    //     dealerAddress: '上天 入海',
+    //     // 安装时间
+    //     sampleRemake: "及时送货， 安装",
+    //   },
     ],
   },
   dealerDetail: function(e) {
@@ -95,7 +98,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    wx.showLoading({
+      title: '努力加载中...',
+    })
+    // 页面初始化时，请求服务器，获取 swiperData ，用于渲染轮播图
+    // 为了避免 this 指向错误，截取this，赋值给 that
+    var that = this;
+    this.getHttpData();
+  },
+
+  getHttpData: function (key) {
+    var that = this;
+    var data = {
+      'username': '123',
+      'userpwd': '123',
+      'pageIndex': 10,
+      'pageSise': 100,
+    }
+    LoadData.requestData('POST', 'https://127.0.0.1:8433/query.DealerServlet', data, function (data) {
+      that.setData({ dealers: data });
+    });
   },
 
   /**

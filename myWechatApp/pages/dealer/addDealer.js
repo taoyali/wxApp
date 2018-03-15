@@ -1,10 +1,11 @@
+var util = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    currentDate: util.shortFormatTime(new Date())
   },
 
   /**
@@ -12,6 +13,13 @@ Page({
    */
   onLoad: function (options) {
     
+  },
+
+  //  点击日期组件确定事件  
+  bindDateChange: function (e) {
+    this.setData({
+      currentDate: e.detail.value
+    })
   },
 
   /**

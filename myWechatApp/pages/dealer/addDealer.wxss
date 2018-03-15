@@ -29,3 +29,17 @@
   border-radius:20rpx;
   padding:20rpx 20rpx 20rpx 20rpx;
 }
+
+.bottomView {
+  width: 90%;
+  font-size: 35rpx;
+  background-color: #00a0ac;
+  color: #fff;
+  position: fixed;
+  bottom: 15rpx;
+  height: 2.0;
+  line-height: 2.0;
+  margin: 0 30rpx 0 30rpx;
+  align-items: center;
+  text-align: center;
+}

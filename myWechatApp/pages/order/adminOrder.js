@@ -1,8 +1,7 @@
-// var LoadUtil = require('../../utils/loadData.js');
-// var loadUtil = new LoadUtil();
+var LoadData = require('../../utils/loadData.js');
 
 // var util = require('../../utils/util.js');
-// var ListCompment = require('../../lib/ListCompment.js');
+// var ListCompment = require('../../utils/ListCompment.js');
 // var listCompment = new ListCompment({
 //   name: 'adminOrders',
 //   api: '/partner-userMforlist',
@@ -15,52 +14,29 @@ Page({
    */
   data: {
     adminOrders: [
-      {
-        // 经销商名称：
-        id:"111",
-        dealerCode: "经销商1 code",
-        dealerName: "杭州天鑫五金建材有限公司",
-        customName: "客户名称",
-        customPhoneNumber: "13645527410",
-        productName: "H103锁",
-        count: '5',
-        productTotalPrice: '1000',
-        // 安装时间
-        installTime: "time",
-        // 下单时间
-        orderTime: "time",
-        doorType: '门类型',
-        // 衬板宽、高
-        scaleboardWidth: "50",
-        scaleboardHeight: "50",
-        address: "顾客地址",
-        // 备注：
-        remake: "及时送货， 安装",
-        status: 2,
-      },
-      {
-        // 经销商名称：
-        id:"222",
-        dealerCode: "经销商2 code",
-        dealerName: "distributorCode",
-        customName: "客户名称",
-        customPhoneNumber: "13645527410",
-        productName: "H104锁",
-        count: '10',
-        productTotalPrice: '1000',
-        // 安装时间
-        installTime: "time",
-        // 下单时间
-        orderTime: "time",
-        doorType: '门类型',
-        // 衬板宽、高
-        scaleboardWidth: "50",
-        scaleboardHeight: "50",
-        address: "顾客地址",
-        // 备注：
-        remake: "及时送货， 安装",
-        status: 1,
-      }
+      // {
+      //   // 经销商名称：
+      //   id:"111",
+      //   dealerCode: "经销商1 code",
+      //   dealerName: "杭州天鑫五金建材有限公司",
+      //   customName: "客户名称",
+      //   phone: "13645527410",
+      //   productName: "H103锁",
+      //   count: '5',
+      //   totalPrice: '1000',
+      //   // 安装时间
+      //   installDate: "time",
+      //   // 下单时间
+      //   orderTime: "time",
+      //   doorType: '门类型',
+      //   // 衬板宽、高
+      //   scaleboardWidth: "50",
+      //   scaleboardHeight: "50",
+      //   address: "顾客地址",
+      //   // 备注：
+      //   remake: "及时送货， 安装",
+      //   status: 2,
+      // },
     ]
   },
 
@@ -68,7 +44,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // listCompment.setParams('cate_id', 1).setParams('page_size', 10); //设置额外传参
+    // listCompment.setParams('pageIndex', 1).setParams('pageSise', 100); //设置额外传参
     // listCompment.init(this); //初始化，传入this
     wx.showLoading({
       title: '努力加载中...',
@@ -76,41 +52,21 @@ Page({
     // 页面初始化时，请求服务器，获取 swiperData ，用于渲染轮播图
     // 为了避免 this 指向错误，截取this，赋值给 that
     var that = this;
-    // this.getHttpData("swiperData", "json");
+    this.getHttpData();
   },
 
-  getHttpData: function (key, _type) {
+  getHttpData: function (key) {
     var that = this;
-    this.loadScrollImages(key, _type, function (data) {
+    var data = {
+      'username': '123',
+      'userpwd': '123',
+      'pageIndex': 10,
+      'pageSise': 100,
+    }
+    LoadData.requestData('POST', 'https://127.0.0.1:8433/query.OrderServlet', data, function (data) {
       wx.hideLoading();
       console.log(data);
-      that.setData({ swiperData: data });
-    });
-  },
-
-  // 从 wxappclub 的 api 中心获取数据的方法
-  // key 表示数据名称，_type 数据类型，callback 表示请求成功的回调函数
-  // 回调函数的的参数，用于携带请求得到的数据
-  loadScrollImages: function (key, _type, callback) {
-
-    wx.request({
-      url: 'https://api.wxappclub.com/get',
-      data: {
-        // 笔者的API中心，提供给各位使用
-        "appkey": "eaa7gcwem04j8sak7hm8g88mkftgb26h",
-        "key": key,
-        "type": _type
-      },
-      method: 'GET',
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        if (res.data.success) {
-          // console.log(res.data.result.value);
-          callback(res.data.result.value);
-        }
-      }
+      that.setData({ adminOrders: data });
     });
   },
 
@@ -138,45 +94,12 @@ Page({
         url: '../order/orderDetail',
       })
     } catch (e) {
-      
+
     }
   },
 
   // 技术文章：http://p.codekk.com/detail/Android/hss01248/wxListview
   onShow: function () {
-    console.log('App Show')
-    // wx.showToast({
-    //       title: '成功',
-    //       icon: 'success',
-    //       duration: 2000
-    //     })
-    var that = this
-    wx.request({
-      //url: 'http://127.0.0.1:8000/bloglist',
-      url: 'https://api.app.happyjuzi.com/article/list/channel?accesstoken=e1ddb552837cb75f9cc4cbf7154b8ea1&id=102&net=wifi&page=1&pf=ios&res=320x568&size=20&uid=10072&ver=3.7',
-      data: {},
-      header: {},
-      method: 'GET'.toUpperCase(),
-      success: function (res) {
-        wx.hideLoading(),
-          wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 2000
-          })
-        that.setData({
-          xxx: res.data.data.list
-        })
-      },
-      fail: function (msg) {
-        console.log('reqest error', msg)
-        wx.showToast({
-          title: msg,
-          icon: 'success',
-          duration: 2000
-        })
-      }
-    })
 
   },
 

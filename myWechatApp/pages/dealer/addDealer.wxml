@@ -24,7 +24,12 @@
 
 <view class='textView'>
   <view class='orderDetailText'> 上样时间: </view>
-  <input class='textInput' name="installTime"></input>
+  <!-- <input class='textInput' name="installTime"></input> -->
+  <picker class='textInput' mode="date" value="{{date}}" start="2018-04-01" end="2020-04-01" bindchange="bindDateChange">  
+    <view class="picker">  
+      {{ currentDate }}  
+    </view>  
+  </picker>
 </view>
 
 <view class='textView'>
@@ -40,6 +45,10 @@
 <view style='display: flex; flex-direction: row'>
   <text class='orderDetailText'>备注: </text>
   <textarea class='orderDetailTextView' name="sampleRemake" maxlength='500'> </textarea>
+</view>
+
+<view>
+  <button class="bottomView" bindtap="addDealer"> 添加代理商 </button>
 </view>
 
 </view>
