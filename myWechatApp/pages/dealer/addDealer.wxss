@@ -7,39 +7,43 @@
   align-items: center
 }
 
-.orderDetailText {
-    font-size:30rpx; 
+.titleLabel {
+    width: 80px;
+    font-size:15px; 
     margin-left: 20rpx;
     margin-right: 20rpx;
     color: gray;
 }
 
 .textInput {
+  font-size: 30rpx;
   border: 1px solid gray;
   padding: 0 10rpx;
+  min-width: 350rpx;
 }
 
-.orderDetailTextView{
+.remarkTextView{
   color:gray;
   min-height:80rpx;
-  max-height: 160rpx;
-  min-width:200rpx;
+  max-height: 140rpx;
+  min-width:120rpx;
   font-size:30rpx;
   border:1rpx solid gray;
   border-radius:20rpx;
-  padding:20rpx 20rpx 20rpx 20rpx;
+  margin:15rpx 40rpx 0rpx 50rpx;
+  padding: 10rpx 20rpx;
 }
 
 .bottomView {
-  width: 90%;
+  width: 80%;
   font-size: 35rpx;
   background-color: #00a0ac;
   color: #fff;
   position: fixed;
-  bottom: 15rpx;
+  bottom: 40rpx;
   height: 2.0;
   line-height: 2.0;
-  margin: 0 30rpx 0 30rpx;
+  margin: 0 10%;
   align-items: center;
   text-align: center;
 }

@@ -3,52 +3,51 @@
 <view style='height:40rpx'></view>
 
 <view class='textView'>
-  <text class='orderDetailText'> 经销商代码: </text>
-  <input class='textInput' name="dealerCoder"></input>
+  <text class='titleLabel'> 经销商代码: </text>
+  <input class='textInput' name="dealerCode" bindblur='dealerCodeEvent'></input>
 </view>
 
 <view class='textView'>
-  <text class='orderDetailText'> 经销商名称: </text>
-  <input class='textInput' name="dealerName"></input>
+  <text class='titleLabel'> 经销商名称: </text>
+  <input class='textInput' name="dealerName" bindblur='dealerNameEvent'></input>
 </view>
 
 <view class='textView'>
-  <view class='orderDetailText'> 负责人: </view>
-  <input class='textInput' name="dealerPerson"></input>
+  <view class='titleLabel'> 负责人: </view>
+  <input class='textInput' name="dealerPerson" bindblur='dealerPersonEvent'></input>
 </view>
 
 <view class='textView'>
-  <view class='orderDetailText'> 手机号: </view>
-  <input class='textInput' name="dealerIphone"></input>
+  <view class='titleLabel'> 手机号: </view>
+  <input class='textInput' name="iphone" bindblur='iphoneEvent'></input>
 </view>
 
 <view class='textView'>
-  <view class='orderDetailText'> 上样时间: </view>
+  <view class='titleLabel'> 上样时间: </view>
   <!-- <input class='textInput' name="installTime"></input> -->
-  <picker class='textInput' mode="date" value="{{date}}" start="2018-04-01" end="2020-04-01" bindchange="bindDateChange">  
-    <view class="picker">  
-      {{ currentDate }}  
-    </view>  
+  <picker class='textInput' mode="date" value="{{date}}" start="2018-04-01" end="2020-04-01" bindchange="bindDateChangeEvent">  
+    <input class="picker" name="installTime" value='{{ currentDate }}'> 
+    </input>  
   </picker>
 </view>
 
 <view class='textView'>
-  <view class='orderDetailText'> 样品类型: </view>
-  <input class='textInput' name="sampleType"></input>
+  <view class='titleLabel'> 样品类型: </view>
+  <input class='textInput' name="sampleType" bindblur='sampleTypeEvent'></input>
 </view>
 
 <view class='textView'>
-  <view class='orderDetailText'> 经销商地址: </view>
-  <input class='textInput' name="dealerAddress"></input>
+  <view class='titleLabel'> 经销商地址: </view>
+  <input class='textInput' name="dealerAddress" bindblur='dealerAddressEvent'></input>
 </view>
 
 <view style='display: flex; flex-direction: row'>
-  <text class='orderDetailText'>备注: </text>
-  <textarea class='orderDetailTextView' name="sampleRemake" maxlength='500'> </textarea>
+  <text class='titleLabel'>备注: </text>
+  <textarea class='remarkTextView' name="sampleRemake" maxlength='500' bindblur='sampleRemakeEvent'> </textarea>
 </view>
 
 <view>
-  <button class="bottomView" bindtap="addDealer"> 添加代理商 </button>
+  <button class="bottomView" bindtap="addDealerEvent"> 提交 </button>
 </view>
 
-</view>
+</view> 

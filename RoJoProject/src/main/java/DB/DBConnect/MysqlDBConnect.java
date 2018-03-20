@@ -11,7 +11,7 @@ public class MysqlDBConnect extends DBConnect {
     private static String driver = "com.mysql.jdbc.Driver";
     private static String url = "jdbc:mysql://localhost:3306/rojo";
     private static String user = "root";
-    private static String password = "";
+    private static String password = "taoyali";
     static private Connection dbConnection = null;
 
     public Connection getDbConnection() {

@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="RoJoProject:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/RoJoProject_war_exploded</output-path>
-    <root id="root">
+  <artifact type="war" name="rojo">
+    <output-path>$PROJECT_DIR$/out/artifacts/rojo</output-path>
+    <root id="archive" name="rojo.war">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="RoJoProject" />
+          <element id="module-output" name="rojo" />
         </element>
         <element id="directory" name="lib">
           <element id="file-copy" path="$USER_HOME$/Downloads/mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar" />
@@ -12,7 +12,7 @@
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.44" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="RoJoProject/web/Web" />
+      <element id="javaee-facet-resources" facet="rojo/web/Web" />
     </root>
   </artifact>
 </component>
