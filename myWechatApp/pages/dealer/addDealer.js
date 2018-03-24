@@ -94,7 +94,7 @@ Page({
       "sampleRemake": this.data.sampleRemake, 
     };
 
-    LoadData.requestData('POST', 'https://127.0.0.1:8433/add.DealerServlet', parameter, function (data) {
+    LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/add.DealerServlet', parameter, function (data) {
       debugger
       console.log(data)
       debugger

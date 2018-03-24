@@ -8,11 +8,11 @@
 
 <view class='orderDetailText'> 客户姓名 : {{orderDetail.customName}}</view>
 
-<view class='orderDetailText'> 客户手机 : {{orderDetail.customPhoneNumber}}</view>
+<view class='orderDetailText'> 客户手机 : {{orderDetail.phone}}</view>
 
 <view class='orderDetailText'> 商品名称 : {{orderDetail.productName}}</view>
 
-<view class='orderDetailText'> 安装时间 : {{orderDetail.installTime}}</view>
+<view class='orderDetailText'> 安装时间 : {{orderDetail.installDate}}</view>
 
 <view class='orderDetailText'> 门类型 : {{orderDetail.doorType}}</view>
 

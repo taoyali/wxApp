@@ -14,7 +14,7 @@ import java.util.List;
 public class OrderOperation extends DBOperationAbstrct {
     public List query(int pageIndex, int pageSize, DAOCallBack callBack) throws Exception {
 
-        String sql = "select *, d.dealerName, d.dealerCode from myOrder o inner join dealer d on o.dealer_id = d.id";
+        String sql = "select *, d.dealerName, d.dealerCode from myorder o inner join dealer d on o.dealer_id = d.id";
         this.pStatement = this.connection.prepareStatement(sql);
         ResultSet rs = this.pStatement.executeQuery();
         return callBack.callBack(rs);

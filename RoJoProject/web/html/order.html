@@ -16,6 +16,7 @@
 //            var hash = hex_md5(data);
 //            var hash = hex_md5(data);
 
+//            axios.post('http://localhost:8080/query.OrderServlet', data)
             axios.post('https://net.rojo.vip:8443/rojo/query.OrderServlet', data)
                 .then(function (response) {
                     if (response.status == 200) {

@@ -53,10 +53,10 @@ Page({
     var data = {
       'username': '123',
       'userpwd': '123',
-      'pageIndex': 10,
+      'pageIndex': 1,
       'pageSise': 100,
     }
-    LoadData.requestData('POST', 'https://127.0.0.1:8433/query.DealerServlet', data, function (data) {
+    LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/query.DealerServlet', data, function (data) {
       that.setData({ dealers: data });
     });
   },

@@ -1,13 +1,5 @@
 var LoadData = require('../../utils/loadData.js');
 
-// var util = require('../../utils/util.js');
-// var ListCompment = require('../../utils/ListCompment.js');
-// var listCompment = new ListCompment({
-//   name: 'adminOrders',
-//   api: '/partner-userMforlist',
-//   ajax: util.ajax //这是我自己封装的ajax
-// });
-
 Page({
   /**
    * 页面的初始数据
@@ -44,8 +36,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // listCompment.setParams('pageIndex', 1).setParams('pageSise', 100); //设置额外传参
-    // listCompment.init(this); //初始化，传入this
     wx.showLoading({
       title: '努力加载中...',
     })
@@ -63,7 +53,7 @@ Page({
       'pageIndex': 10,
       'pageSise': 100,
     }
-    LoadData.requestData('POST', 'https://127.0.0.1:8433/query.OrderServlet', data, function (data) {
+    LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/query.OrderServlet', data, function (data) {
       wx.hideLoading();
       console.log(data);
       that.setData({ adminOrders: data });
