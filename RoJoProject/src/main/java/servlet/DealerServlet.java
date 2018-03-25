@@ -29,8 +29,8 @@ public class DealerServlet extends HttpServlet {
 //        String name = request.getParameter("authenticationCode");
         // 获取方法名字
         String servletPath = request.getServletPath();// /xxxxxx.do
-        List<String> strings = Regular.regular(servletPath, "[a-z]{1,}");
-        String methodName = strings.get(0);
+        String[] strings = servletPath.split("\\.");
+        String methodName = strings[0].replace("/", "");
         try {
             // 利用反射获取方法
             Method method = getClass().getDeclaredMethod(methodName,
@@ -52,22 +52,39 @@ public class DealerServlet extends HttpServlet {
     private void query(HttpServletRequest request, HttpServletResponse response) {
         // TODO Auto-generated method stub
         try {
-//            JSONObject jsonObject = FromJson.
             JSONObject jsonObject = FromJson.getJsonObject(request);
-
             int pageIndex = jsonObject.getInteger("pageIndex");
-            int pageSise = jsonObject.getInteger("pageSise");
+            int pageSize = jsonObject.getInteger("pageSize");
+            String phone =  jsonObject.getString("userName");
+            String pwd =  jsonObject.getString("userPwd");
 
             DealerOperation queryDealer = new DealerOperation();
-            String registStatus = new String();
             Boolean status = false;
             try {
-                List dealers = queryDealer.query(pageIndex, pageSise, new Dealer());
-                if (dealers.size() > 0) {
-                    registStatus = "代理商个数：" + dealers.size();
-                } else  {
-                    registStatus = "暂无代理商";
-                }
+                List dealers = queryDealer.query(pageIndex, pageSize, phone, pwd, new Dealer());
+                ResponseJsonUtils.json(response, dealers);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            System.out.print(e);
+            e.printStackTrace();
+        }
+    }
+
+    private void queryList(HttpServletRequest request, HttpServletResponse response) {
+        // TODO Auto-generated method stub
+        try {
+            JSONObject jsonObject = FromJson.getJsonObject(request);
+            int pageIndex = jsonObject.getInteger("pageIndex");
+            int pageSize = jsonObject.getInteger("pageSize");
+            String phone =  jsonObject.getString("phone");
+            String pwd =  jsonObject.getString("pwd");
+
+            DealerOperation queryDealer = new DealerOperation();
+            Boolean status = false;
+            try {
+                List dealers = queryDealer.query(pageIndex, pageSize, new Dealer());
                 ResponseJsonUtils.json(response, dealers);
             } catch (Exception e) {
                 e.printStackTrace();

@@ -50,7 +50,7 @@ public class RegistServlet extends HttpServlet {
             String registStatus = new String();
             Boolean status = false;
             try {
-                status = dbManageUserOperation.addUser(phone, pwd);
+                status = dbManageUserOperation.addManager(phone, pwd);
                 if (status) {
                     registStatus = "注册成功";
                 } else  {
@@ -66,17 +66,5 @@ public class RegistServlet extends HttpServlet {
         } catch (Exception e) {
 
         }
-
-
-//        response.setContentType("text/html;charset=UTF-8");
-//        PrintWriter pw = response.getWriter();
-//        String docType = "<!DOCTYPE html> \n";
-//        pw.println(docType +
-//                "<html>\n" +
-//                "<head><title>" + "注册" + "</title></head>\n" +
-//                "<body bgcolor=\"#f0f0f0\">\n" +
-//                "<h1 align=\"center\">" + registStatus + "</h1>\n" +
-//                "</ul>\n" +
-//                "</body></html>");
     }
 }

@@ -9,6 +9,7 @@ function requestData (type, url, data, callback) {
       'content-type': 'application/json'
     },
     success: function (res) {
+      debugger
       wx.hideLoading();
       if (res.statusCode == 200) {
         wx.hideLoading(),
@@ -21,6 +22,7 @@ function requestData (type, url, data, callback) {
       }
     },
     fail: function (res) {
+      debugger
       wx.hideLoading();
       wx.showToast({
         title: msg,

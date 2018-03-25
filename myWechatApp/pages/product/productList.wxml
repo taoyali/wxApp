@@ -1,0 +1,27 @@
+<view>
+  <view class="section"> 
+    <scroll-view class="homelist" scroll-y style="height: 90%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+       <view wx:for="{{products}}" class="section" data-sid="{{item.id}}">
+        <!-- <template is="scrollviewcell" data="{{item }}" /> -->
+        <view class="cellDetail" bindtap='addProduct' data-index="{{index}}">
+          <view class='cellContent'>{{item.productName}}</view>
+          <view class='cellContent'>{{item.type}}</view>
+          <view class='cellContent'>{{item.price}}</view> 
+        </view>
+      </view> 
+    </scroll-view>
+   </view>   
+
+  <button class="bottomView" bindtap="addProduct"> 添加产品 </button>
+
+  <template name="scrollviewcell">
+  <!-- <navigator url="./orderDetail?id={{id}}&pic={{pic}}&title={{title}}" class="detail"> -->
+    <navigator url="./dealer?dealer={{dealerName}}" class="cellDetail">
+      <view class='cellContent'>{{dealerCode}}</view>
+      <view class='cellContent'>{{dealerName}}</view>
+      <view class='cellContent'>{{director}}</view> 
+    </navigator>
+  </template>
+
+</view>
+

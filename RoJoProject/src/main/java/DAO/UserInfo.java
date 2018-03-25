@@ -57,8 +57,8 @@ import java.util.List;
         while (resultSet.next()) {
             UserInfo userInfo = new UserInfo();
             userInfo.setId(resultSet.getInt(1));
-            userInfo.setName(resultSet.getNString(2));
-            userInfo.setPassword(resultSet.getNString(3));
+            userInfo.setName(resultSet.getString(2));
+            userInfo.setPassword(resultSet.getString(3));
             userInfos.add(userInfo);
             break;
         }

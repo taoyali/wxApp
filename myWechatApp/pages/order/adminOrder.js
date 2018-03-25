@@ -45,15 +45,16 @@ Page({
     this.getHttpData();
   },
 
-  getHttpData: function (key) {
+  getHttpData: function () {
     var that = this;
-    var data = {
-      'username': '123',
-      'userpwd': '123',
-      'pageIndex': 10,
-      'pageSise': 100,
+
+    var parameters = {
+      'userName': wx.getStorageSync("USER_INFO_LOGIN_NAME"),
+      'userPwd': wx.getStorageSync("USER_INFO_USER_PWD"),
+      'pageIndex': 1,
+      'pageSize': 100,
     }
-    LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/query.OrderServlet', data, function (data) {
+    LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/queryList.OrderServlet', parameters, function (data) {
       wx.hideLoading();
       console.log(data);
       that.setData({ adminOrders: data });

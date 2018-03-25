@@ -2,9 +2,14 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Dictionary;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
+import DAO.Dealer;
 import DAO.ManageUser;
+import DB.DealerOperation;
 import DB.ManageUserOperation;
 import com.alibaba.fastjson.JSONObject;
 import util.*;
@@ -24,7 +29,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter pw = response.getWriter();
 //        pw.write("<h1> hello servlet </h1>");
-        String title = "使用 GET 方法读取表单数据";
+//        String title = "使用 GET 方法读取表单数据";
 //        String phone = new String(request.getParameter("name").getBytes("ISO8859-1"),"UTF-8");
 //        String password = new String(request.getParameter("password").getBytes("ISO8859-1"), "UTF-8");
 
@@ -35,56 +40,57 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
             String userName = jsonObject.getString("userName");
             String userPwd = jsonObject.getString("userPwd");
 
-            ManageUserOperation dbuse = new ManageUserOperation();
 
-            String loginStatus = new String();
+            int loginStatus = 1;
+            int userType = 1; // 管理员
             String loginUserInfoString = new String();
             try {
-                List<ManageUser> userInfos = dbuse.selectByName(userName, userPwd, new ManageUser());
+                ManageUserOperation dbuse = new ManageUserOperation();
+                List<ManageUser> userInfos = dbuse.selectManager(userName, userPwd, new ManageUser());
                 if (userInfos.size() > 0) {
                     ManageUser manageUser = userInfos.get(0);
 
                     //登陆成功
                     //设置session
-                    request.getSession().setAttribute("USER_INFO_LOGIN_NAME", manageUser.getName());
+                    request.getSession().setAttribute("USER_INFO_LOGIN_NAME", manageUser.getPhone());
                     request.getSession().setAttribute("USER_INFO_USER_ID", String.valueOf(manageUser.getId()));
                     request.getSession().setAttribute("USER_INFO_USER_PWD", manageUser.getPwd());
                     //设置cookie
                     response.addCookie(new Cookie("USER_INFO_LOGIN_NAME", manageUser.getName()));
                     response.addCookie(new Cookie("USER_INFO_USER_ID", String.valueOf(manageUser.getId())));
                     response.addCookie(new Cookie("USER_INFO_USER_PWD", manageUser.getPwd()));
-                    loginUserInfoString = " <li><b> userId</b>: "
-                            + manageUser.getId()  + "\n" +
-                            " <li><b> name</b>: "
-                            + manageUser.getName() + "\n" +
-                            " <li><b> phone</b>: "
-                            +  manageUser.getPhone() + "\n" +
-                            " <li><b> pwd</b>: "
-                            +  manageUser.getPwd() + "\n";
-                    loginStatus = "登录成功";
+                    loginStatus = 0;
+                    userType = 1; // 用户
                 } else {
-                    loginStatus = "用户不存在或密码错误";
+                    DealerOperation dealerOperation = new DealerOperation();
+                    List<Dealer> dealers = dealerOperation.query(userName, userPwd, new Dealer());
+                    if (dealers.size() > 0) {
+                        Dealer dealer = dealers.get(0);
+                        //登陆成功
+                        //设置session
+                        request.getSession().setAttribute("USER_INFO_LOGIN_NAME", dealer.phone);
+                        request.getSession().setAttribute("USER_INFO_USER_ID", String.valueOf(dealer.id));
+                        request.getSession().setAttribute("USER_INFO_USER_PWD", dealer.pwd);
+                        //设置cookie
+                        response.addCookie(new Cookie("USER_INFO_LOGIN_NAME", dealer.phone));
+                        response.addCookie(new Cookie("USER_INFO_USER_ID", String.valueOf(dealer.id)));
+                        response.addCookie(new Cookie("USER_INFO_USER_PWD", dealer.pwd));
+
+                        loginStatus = 0;
+                        userType = 2; // 用户
+                    }
                 }
-                String docType = "<!DOCTYPE html> \n";
-                pw.println(docType +
-                        "<html>\n" +
-                        "<head><title>" + title + "</title></head>\n" +
-                        "<body bgcolor=\"#f0f0f0\">\n" +
-                        "<h1 align=\"center\">" + title + "</h1>\n" +
-                        "<ul>\n" +
-                        "  <li><b>站点名</b>："
-                        + userName + "\n" +
-                        "  <li><b>网址</b>："
-                        + request.getParameter("password") + "\n" +
-                        " <li><b> 登录状态</b>: "
-                        + loginStatus + "\n"
-                        + loginUserInfoString +
-                        "</ul>\n" +
-                        "</body></html>");
-                ResponseJsonUtils.json(response, "");
+                if (loginStatus == 0) {
+                    LinkedHashMap<String, Object> data = new LinkedHashMap<String, Object>();
+                    data.put("loginStatus", loginStatus);
+                    data.put("authonKey", "authonKey");
+                    data.put("authonToken", "authonToken");
+                    data.put("userType", userType);
+                    ResponseJsonUtils.json(response, data);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
-                loginStatus = "服务器异常";
+                loginStatus = 1;
             }
         } catch (Exception e) {
             System.out.print(e);

@@ -6,11 +6,11 @@
         <view bindtap='orderDetail' data-index="{{index}}">
           <view class='cellTopContent'>
             <text class='cellTopLeft'> {{item.dealerName}} </text>
-            <text class='cellTopRight' wx:if="{{item.status==1}}">已付款</text>
-            <text class='cellTopRight' wx:elif="{{item.status==2}}">未付款</text>
+            <text class='cellTopRight' wx:if="{{item.status == 1}}">已付款</text>
+            <text class='cellTopRight' wx:elif="{{item.status == 0}}">未付款</text>
           </view>
           <view class='cellBottomContent'>
-            <text class='cellBottomLeft'> {{item.count}} 个 {{item.productName}}                    </text>
+            <text class='cellBottomLeft'> {{item.count}} 个 {{item.productName}} </text>
             <text class='cellBottomRight'> {{item.installDate}} 安装 </text>
           </view>
         </view>

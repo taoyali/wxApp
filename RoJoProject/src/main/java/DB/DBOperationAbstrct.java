@@ -3,8 +3,8 @@ package DB;
 import DB.DBConnect.DBConnect;
 import DB.DBConnect.MysqlDBConnect;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Connection;
 
 /**
  * Created by taoyali on 2018/2/3.

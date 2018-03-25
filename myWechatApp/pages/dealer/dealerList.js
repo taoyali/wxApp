@@ -48,16 +48,19 @@ Page({
     this.getHttpData();
   },
 
-  getHttpData: function (key) {
+  getHttpData: function () {
+    
     var that = this;
-    var data = {
+    var parameters = {
       'username': '123',
       'userpwd': '123',
-      'pageIndex': 1,
-      'pageSise': 100,
+      'pageIndex': 10,
+      'pageSize': 100,
     }
-    LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/query.DealerServlet', data, function (data) {
-      that.setData({ dealers: data });
+    debugger
+    LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/query.DealerServlet', parameters, function (response) {
+      debugger
+      that.setData({ dealers: response });
     });
   },
 

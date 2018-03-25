@@ -16,13 +16,6 @@ import java.util.List;
  */
 public class DealerOperation extends DBOperationAbstrct {
 
-
-//    public DealerOperation() {
-//        super();
-//        DBConnect dbConnect = new MysqlDBConnect();
-//        connection = dbConnect.getDbConnection();
-//    }
-
     public List query(String...args) throws Exception {
 
             return new ArrayList();
@@ -31,6 +24,24 @@ public class DealerOperation extends DBOperationAbstrct {
     public List query(int pageIndex, int pageSize, DAOCallBack callBack) throws Exception {
         String sql = "select * from dealer";
         this.pStatement = this.connection.prepareStatement(sql);
+        ResultSet rs = this.pStatement.executeQuery();
+        return callBack.callBack(rs);
+    }
+
+    public List query(int pageIndex, int pageSize, String phone, String pwd, DAOCallBack callBack) throws Exception {
+        String sql = "select * from dealer where phone=? and pwd=?";
+        this.pStatement = this.connection.prepareStatement(sql);
+        this.pStatement.setString(1, phone);
+        this.pStatement.setString(2, pwd);
+        ResultSet rs = this.pStatement.executeQuery();
+        return callBack.callBack(rs);
+    }
+
+    public List query(String phone, String pwd, DAOCallBack callBack) throws Exception {
+        String sql = "select * from dealer where phone=? and pwd=?";
+        this.pStatement = this.connection.prepareStatement(sql);
+        this.pStatement.setString(1, phone);
+        this.pStatement.setString(2, pwd);
         ResultSet rs = this.pStatement.executeQuery();
         return callBack.callBack(rs);
     }

@@ -1,3 +1,21 @@
 {
-  "navigationBarTitleText": "订单列表"
+  "navigationBarTitleText": "订单列表",
+  "tabBar": {
+    "backgroundColor": "#00a0ac",
+    "color": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/order/adminOrder",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/dealer/dealerList",
+        "text": "代理商"
+      },
+      {
+        "pagePath": "pages/index/mainPage/mainPage",
+        "text": "我的"
+      }
+    ]
+  }
 }

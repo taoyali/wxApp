@@ -1,0 +1,49 @@
+.textView {
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  /* justify-content: space-around; */
+  flex-direction: row;
+  align-items: center
+}
+
+.titleLabel {
+    width: 80px;
+    font-size:15px; 
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+    color: gray;
+}
+
+.textInput {
+  font-size: 30rpx;
+  border: 1px solid gray;
+  padding: 0 10rpx;
+  min-width: 350rpx;
+}
+
+.remarkTextView{
+  color:gray;
+  min-height:80rpx;
+  max-height: 140rpx;
+  min-width:120rpx;
+  font-size:30rpx;
+  border:1rpx solid gray;
+  border-radius:20rpx;
+  margin:15rpx 40rpx 0rpx 50rpx;
+  padding: 10rpx 20rpx;
+}
+
+.bottomView {
+  width: 80%;
+  font-size: 35rpx;
+  background-color: #00a0ac;
+  color: #fff;
+  position: fixed;
+  bottom: 40rpx;
+  height: 2.0;
+  line-height: 2.0;
+  margin: 0 10%;
+  align-items: center;
+  text-align: center;
+}

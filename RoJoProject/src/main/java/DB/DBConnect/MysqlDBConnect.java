@@ -9,11 +9,13 @@ import java.sql.SQLException;
  */
 public class MysqlDBConnect extends DBConnect {
     private static String driver = "com.mysql.jdbc.Driver";
-//    private static String url = "jdbc:mysql://localhost:3306/rojo";
-    private static String url = "jdbc:mysql://47.100.36.21:3306/rojo";
     private static String user = "root";
-//    private static String pwd = "taoyali";
+    private static String character = "useUnicode=true&characterEncoding=utf-8";
+    private static String url = "jdbc:mysql://47.100.36.21:3306/rojo";
     private static String pwd = "";
+    //    private static String url = "jdbc:mysql://localhost:3306/rojo";
+    //    private static String pwd = "taoyali";
+
     static private Connection dbConnection = null;
 
     public Connection getDbConnection() {
@@ -27,7 +29,11 @@ public class MysqlDBConnect extends DBConnect {
         try {
             //加载驱动程序
             Class.forName(driver);
-            Connection connection = DriverManager.getConnection(url, user, pwd);
+//            "jdbc:mysql://localhost:3306/test?user=root&password=1&useUnicode=true&characterEncoding=utf-8"
+            String connStreing = url + "?user=" + user + "&password=" + pwd + "&" + character;
+            Connection connection = DriverManager.getConnection(connStreing);
+
+//            Connection connection = DriverManager.getConnection(url, user, pwd);
             if (!connection.isClosed()) {
                 System.out.println(" Succeeded connecting to the Database! ");
             }

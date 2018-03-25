@@ -20,10 +20,20 @@ public class OrderOperation extends DBOperationAbstrct {
         return callBack.callBack(rs);
     }
 
+    public List query(int pageIndex, int pageSize, String phone, String pwd, DAOCallBack callBack) throws Exception {
+
+        String sql = "select *, d.dealerName, d.dealerCode from myorder o inner join dealer d on o.dealer_id = d.id and d.phone=? and d.pwd=?";
+        this.pStatement = this.connection.prepareStatement(sql);
+        this.pStatement.setString(1, phone);
+        this.pStatement.setString(2, pwd);
+        ResultSet rs = this.pStatement.executeQuery();
+        return callBack.callBack(rs);
+    }
+
     public boolean add(Order order) throws Exception {
-        String sql = "insert into myOrder " +
-                "(customName, productName, phone, installDate, doorType, address, remake, scaleboardWidth, scaleboardHeight, count, totalPrice, dealer_id)" +
-                "values (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into myorder " +
+                "(customName, productName, phone, installDate, doorType, address, remake, scaleboardWidth, scaleboardHeight, count, totalPrice, dealer_id, status, userID)" +
+                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         this.pStatement = this.connection.prepareStatement(sql);
         this.pStatement.setString(1, order.customName);
         this.pStatement.setString(2, order.productName);
@@ -38,6 +48,8 @@ public class OrderOperation extends DBOperationAbstrct {
         this.pStatement.setInt(10, order.count);
         this.pStatement.setFloat(11, order.totalPrice);
         this.pStatement.setFloat(12, order.dealer_id);
+        this.pStatement.setInt(13, order.status);
+        this.pStatement.setInt(14, order.userID);
         return this.pStatement.executeUpdate() > 0;
     }
 }

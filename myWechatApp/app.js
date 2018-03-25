@@ -1,6 +1,28 @@
 //app.js
 App({
   onLaunch: function () {
+    var userName = wx.getStorageSync("USER_INFO_LOGIN_NAME");
+    var userPwd = wx.getStorageSync("USER_INFO_USER_PWD");
+    var userType = wx.getStorageSync("userType");
+    if (userName.length > 0 && userPwd.length > 0) {
+      if (userType == 2) {  // user
+        wx.navigateTo({
+          url: 'pages/dealerPages/dealerOrderList'
+        })
+      } else if (userType == 1) {
+        wx.switchTab({
+          url: "pages/order/adminOrder",
+        })
+      } else {
+        wx.navigateTo({
+          url: "pages/login/login",
+        })
+      }
+    } else {
+      wx.navigateTo({
+        url: "pages/login/login",
+      })
+    }
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

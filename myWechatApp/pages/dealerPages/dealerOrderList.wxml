@@ -4,31 +4,18 @@
     <view wx:for="{{dealerOrders}}" class="section" data-sid="{{item.id}}">
       <!-- <template is="scrollviewcell" data="{{ ...item }}" /> -->
        <view class='cellTopContent' data-index="{{index}}" bindtap='dealerOederDetail'>
-        <text class='cellTopLeft'> {{item.count}}个{{item.productName}}; 合计{{item.count*item.productTotalPrice}}; {{item.installTime}}安装 </text> 
-        <text class='cellTopRight' wx:if="{{item.status==1}}">已付款</text>
-        <text class='cellTopRight' wx:elif="{{item.status==2}}">未付款</text>
+        <text class='cellTopLeft'> {{item.count}} 个 {{item.productName}}; 合计 {{item.count*item.totalPrice}} </text> 
+        <text class='cellTopRight' wx:if="{{item.status == 1}}">已付款</text>
+        <text class='cellTopRight' wx:elif="{{item.status == 0}}">未付款</text>
       </view>
       <view class='cellBottomContent'> 
         <text class='cellBottomLeft'> 客户地址: {{item.address}} </text>
-       </view>      
+       </view>
+       <view class='cellBottomContent'> 
+        <text class='cellBottomLeft'> 安装时间: {{item.installDate}} </text>
+       </view>  
     </view>
     </scroll-view>
   </view>
   <button class="bottomView" bindtap="addOrder"> 添加订单 </button>
-
-  <template name="scrollviewcell">
-  <!-- <navigator url="./orderDetail?id={{id}}&pic={{pic}}&title={{title}}" class="detail"> -->
-  <navigator url="../order/orderDetail" class="cellDetail">
-      <view class='cellTopContent'>
-        <text class='cellTopLeft'> {{count}}个{{productName}}; 合计{{count*productTotalPrice}}; {{installTime}}安装 </text> 
-        <text class='cellTopRight' wx:if="{{status==1}}">已付款</text>
-        <text class='cellTopRight' wx:elif="{{status==2}}">未付款</text>
-      </view>
-      <view class='cellBottomContent'> 
-        <text class='cellBottomLeft'> 客户地址: {{address}} </text>
-        <!-- <text class='cellBottomRight'> {{installTime}} 安装 </text> -->
-       </view>  
-  </navigator>
-</template>
-
 </view>

@@ -38,6 +38,8 @@ public class Order implements DAOCallBack {
 
     public String dealerName;
     public String dealerCode;
+    public int status;
+    public int userID;
 
     public List<Order> callBack(ResultSet resultSet) throws Exception {
         List<Order> orders = new ArrayList<Order>();
@@ -48,6 +50,7 @@ public class Order implements DAOCallBack {
             order.productName = resultSet.getString("productName");
             order.phone = resultSet.getString("phone");
             order.installDate = resultSet.getDate("installDate");
+            order.status = resultSet.getInt("status");
             order.doorType = resultSet.getInt("doorType");
             order.address = resultSet.getString("address");
             order.remake = resultSet.getString("remake");
@@ -58,6 +61,7 @@ public class Order implements DAOCallBack {
             order.totalPrice = resultSet.getFloat("totalPrice");
             order.dealerName = resultSet.getString("dealerName");
             order.dealerCode = resultSet.getString("dealerCode");
+            order.userID = resultSet.getInt("userID");
             orders.add(order);
         }
         return orders;

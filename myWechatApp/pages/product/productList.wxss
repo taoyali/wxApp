@@ -1,0 +1,33 @@
+
+.homelist{
+  width:100%;
+  white-space: nowrap;
+  font-size:15rpx;
+  position: fixed;
+  top: 0;
+  z-index:1;
+  background-color: white;
+}
+.cellDetail{
+  border-bottom: 1rpx solid #ccc;
+  margin: 30rpx 20rpx 20rpx 20rpx;
+}
+.cellContent{
+  height: 50rpx;
+  text-align: left;
+  color: gray;
+  font-size: 30rpx;   
+}
+.bottomView {
+  width: 90%;
+  font-size: 35rpx;
+  background-color: #00a0ac;
+  color: #fff;
+  position: fixed;
+  bottom: 15rpx;
+  height: 2.0;
+  line-height: 2.0;
+  margin: 0 30rpx 0 30rpx;
+  align-items: center;
+  text-align: center;
+}

@@ -22,14 +22,15 @@ import static com.sun.org.apache.xalan.internal.xsltc.compiler.sym.error;
  * Created by taoyali on 2018/2/1.
  */
 public class OrderServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String servletPath = request.getServletPath();// /xxxxxx.do
-        List<String> strings = Regular.regular(servletPath, "[a-z]{1,}");
-        String methodName = strings.get(0);
+        String[] strings = servletPath.split("\\.");
+        String methodName = strings[0].replace("/", "");
         try {
             // 利用反射获取方法
             Method method = getClass().getDeclaredMethod(methodName,
@@ -47,17 +48,34 @@ public class OrderServlet extends HttpServlet {
         try {
             JSONObject jsonObject = FromJson.getJsonObject(request);
             int pageIndex = jsonObject.getInteger("pageIndex");
-            int pageSise = jsonObject.getInteger("pageSise");
+            int pageSize = jsonObject.getInteger("pageSize");
+            String phone =  jsonObject.getString("phone");
+            String pwd =  jsonObject.getString("pwd");
+            OrderOperation orderOperation = new OrderOperation();
+            Boolean status = false;
+            try {
+                List dealers = orderOperation.query(pageIndex, pageSize, phone, pwd, new Order());
+                ResponseJsonUtils.json(response, dealers);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            System.out.print(e);
+            e.printStackTrace();
+        }
+    }
+
+    private void queryList(HttpServletRequest request, HttpServletResponse response) {
+        // TODO Auto-generated method stub
+        try {
+            JSONObject jsonObject = FromJson.getJsonObject(request);
+            int pageIndex = jsonObject.getInteger("pageIndex");
+            int pageSize = jsonObject.getInteger("pageSize");
             OrderOperation orderOperation = new OrderOperation();
             String registStatus = new String();
             Boolean status = false;
             try {
-                List dealers = orderOperation.query(pageIndex, pageSise, new Order());
-                if (dealers.size() > 0) {
-                    registStatus = "代理商个数：" + dealers.size();
-                } else  {
-                    registStatus = "暂无代理商";
-                }
+                List dealers = orderOperation.query(pageIndex, pageSize, new Order());
                 ResponseJsonUtils.json(response, dealers);
             } catch (Exception e) {
                 e.printStackTrace();
