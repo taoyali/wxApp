@@ -58,7 +58,7 @@ Page({
       'pageSize': 100,
     }
     debugger
-    LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/query.DealerServlet', parameters, function (response) {
+    LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/queryList.DealerServlet', parameters, function (response) {
       debugger
       that.setData({ dealers: response });
     });

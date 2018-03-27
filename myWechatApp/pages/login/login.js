@@ -31,14 +31,15 @@ Page({
           wx.setStorageSync("USER_INFO_USER_PWD", userPwd);
           wx.setStorageSync("userType", responseData["userType"]);
 
-          var pageUrl = '../dealerPages/dealerOrderList';
-
           if (responseData["userType"] == 1) {
-            pageUrl = '../order/adminOrder';
-          } 
-          wx.navigateTo({
-            url: pageUrl
-          })
+            wx.navigateTo({
+              url: '../dealerPages/dealerOrderList',
+            })
+          } else {
+            wx.switchTab({
+              url: '../order/adminOrder',
+            })
+          }
         }
       });      
     }

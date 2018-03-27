@@ -7,7 +7,9 @@ package DAO;
  */
 public class WxPayConfig {
     //小程序appid
-    public static final String appid = "";
+    public static final String appid = "wx2a7b936d4cc40883";
+    //小程序 secret
+    public static final String appSecret = "123456";
     //微信支付的商户id
     public static final String mch_id = "";
     //微信支付的商户密钥
@@ -20,4 +22,6 @@ public class WxPayConfig {
     public static final String TRADETYPE = "JSAPI";
     //微信统一下单接口地址
     public static final String pay_url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
+
+    public static final String OpenIdURL = "https://api.weixin.qq.com/sns/jscode2session";
 }

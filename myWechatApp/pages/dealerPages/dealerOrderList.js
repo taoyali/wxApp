@@ -1,5 +1,6 @@
 var LoadData = require('../../utils/loadData.js');
 
+var app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -66,8 +67,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // listCompment.setParams('cate_id', 1).setParams('page_size', 10); //设置额外传参
-    // listCompment.init(this); //初始化，传入this
     wx.showLoading({
       title: '努力加载中...',
     })

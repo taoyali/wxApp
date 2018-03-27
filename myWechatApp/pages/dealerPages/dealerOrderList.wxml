@@ -1,9 +1,12 @@
+<import src="../userTabBar.wxml" />  
+<template is="tabBar" data="{{tabBar: tabBar}}" />  
+
 <view class="dealerOrderList">
   <view class="section">
     <scroll-view class="homelist" scroll-y="true" style="height: 92%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <view wx:for="{{dealerOrders}}" class="section" data-sid="{{item.id}}">
+    <view wx:for="{{dealerOrders}}" class="section" data-sid="{{item.id}}" bindtap='dealerOederDetail' data-index="{{index}}">
       <!-- <template is="scrollviewcell" data="{{ ...item }}" /> -->
-       <view class='cellTopContent' data-index="{{index}}" bindtap='dealerOederDetail'>
+      <view class='cellTopContent'>
         <text class='cellTopLeft'> {{item.count}} 个 {{item.productName}}; 合计 {{item.count*item.totalPrice}} </text> 
         <text class='cellTopRight' wx:if="{{item.status == 1}}">已付款</text>
         <text class='cellTopRight' wx:elif="{{item.status == 0}}">未付款</text>

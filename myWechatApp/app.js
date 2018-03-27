@@ -1,4 +1,6 @@
 //app.js
+var LoadData = require('./utils/loadData.js');
+
 App({
   onLaunch: function () {
     var userName = wx.getStorageSync("USER_INFO_LOGIN_NAME");
@@ -31,10 +33,36 @@ App({
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res)
+
+        // // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        // var service_url = 'https://net.rojo.vip:8443/rojo/getOpenId.WXPayServlet';//需要将服务器域名添加到小程序的request合法域名中，而且必须是https开头    
+        // var parameeters = {
+        //   code: res.code
+        // }
+        // LoadData.requestData('POST', service_url, parameters, function () {
+        //     if (res.data != null && res.data != undefined && res.data != '') {
+        //       wx.setStorageSync("openid", res.data.openid);//将获取的openid存到缓存中    
+        //     }
+        // });
+
+        debugger
+
+        var service_url = 'https://net.rojo.vip:8443/rojo/getOpenId.WXPayServlet';//需要将服务器域名添加到小程序的request合法域名中，而且必须是https开头    
+        wx.request({
+          url: service_url,
+          data: { code: res.code},
+          method: 'POST',
+          success: function (res) {
+            debugger
+            console.log(res);
+            if (res.data != null && res.data != undefined && res.data != '') {
+              wx.setStorageSync("openid", res.data.openid);//将获取的openid存到缓存中    
+            }
+          }
+        });
       }
-    })
+    }),
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -56,7 +84,8 @@ App({
       }
     })
   },
+
   globalData: {
-    userInfo: null
-  }
+    userInfo: null,
+  }  
 })

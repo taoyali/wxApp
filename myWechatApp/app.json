@@ -4,6 +4,7 @@
     "pages/order/adminOrder",
     "pages/order/orderDetail",
     "pages/login/login",
+    "pages/login/resetpwd",
     "pages/index/index",
     "pages/index/mainPage/mainPage",
     "pages/dealer/dealerList",
