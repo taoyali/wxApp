@@ -49,14 +49,13 @@ public class ManageUser implements DAOCallBack {
         List<ManageUser> managerUsers = new ArrayList<ManageUser>();
         while (resultSet.next()) {
             ManageUser manageUser = new ManageUser();
-//            manageUser.setId(resultSet.getInt(1));
+            manageUser.setId(resultSet.getInt("id"));
 //            manageUser.setName(resultSet.getNString(1));
             manageUser.setName(resultSet.getString("name"));
 //            manageUser.setPwd(resultSet.getNString(2));
             manageUser.setPhone(resultSet.getString("phone"));
             manageUser.setPwd(resultSet.getString("pwd"));
             managerUsers.add(manageUser);
-            break;
         }
         return managerUsers;
     }

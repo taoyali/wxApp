@@ -39,27 +39,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    app.editTabBar2(); 
+
     wx.showLoading({
       title: '努力加载中...',
     })
-    // 页面初始化时，请求服务器，获取 swiperData ，用于渲染轮播图
-    // 为了避免 this 指向错误，截取this，赋值给 that
-    var that = this;
-    this.getHttpData();
   },
 
   getHttpData: function () {
     
     var that = this;
     var parameters = {
-      'username': '123',
-      'userpwd': '123',
+      'phone': '123',
+      'pwd': '123',
       'pageIndex': 10,
       'pageSize': 100,
     }
-    debugger
     LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/queryList.DealerServlet', parameters, function (response) {
-      debugger
       that.setData({ dealers: response });
     });
   },
@@ -75,7 +72,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    // 页面初始化时，请求服务器，获取 swiperData ，用于渲染轮播图
+    // 为了避免 this 指向错误，截取this，赋值给 that
+    var that = this;
+    this.getHttpData();
   },
 
   /**

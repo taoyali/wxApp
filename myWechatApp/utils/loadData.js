@@ -9,12 +9,11 @@ function requestData (type, url, data, callback) {
       'content-type': 'application/json'
     },
     success: function (res) {
-      debugger
       wx.hideLoading();
       if (res.statusCode == 200) {
         wx.hideLoading(),
           wx.showToast({
-            title: '加载成功',
+            title: '操作成功',
             icon: 'success',
             duration: 2000
           })
@@ -25,8 +24,8 @@ function requestData (type, url, data, callback) {
       debugger
       wx.hideLoading();
       wx.showToast({
-        title: msg,
-        icon: 'success',
+        title: "操作失败",
+        icon: 'fail',
         duration: 2000
       })
     }

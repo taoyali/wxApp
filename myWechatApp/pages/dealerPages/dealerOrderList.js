@@ -1,6 +1,6 @@
 var LoadData = require('../../utils/loadData.js');
+var WXPay = require('../../utils/wxPay.js');
 
-var app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -15,7 +15,7 @@ Page({
       //   customPhoneNumber: "13645527410",
       //   productName: "H103锁",
       //   count: '5',
-      //   productTotalPrice: '1000',
+      //   totalPrice: '1000',
       //   // 安装时间
       //   installTime: "time",
       //   // 下单时间
@@ -32,10 +32,10 @@ Page({
     ],
   },
 
-  dealerOederDetail: function(e) {
+  dealerOrderDetail: function(e) {
     var index = e.currentTarget.dataset.index;
     var item = this.data.dealerOrders[index];
-    var modelString = JSON.stringify(item);
+    // var modelString = JSON.stringify(item);
     try {
       wx.setStorageSync('orderDetail', item);
       wx.navigateTo({
@@ -56,9 +56,7 @@ Page({
       'pageIndex': 1,
       'pageSize': 100,
     }
-    debugger
     LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/query.OrderServlet', parameters, function (response) {
-      debugger
       that.setData({ dealerOrders: response });
     });
   },
@@ -70,17 +68,21 @@ Page({
     wx.showLoading({
       title: '努力加载中...',
     })
-    // 页面初始化时，请求服务器，获取 swiperData ，用于渲染轮播图
-    // 为了避免 this 指向错误，截取this，赋值给 that
-    var that = this;
-    this.getHttpData();
   },
 
-  // 从 wxappclub 的 api 中心获取数据的方法
-  // key 表示数据名称，_type 数据类型，callback 表示请求成功的回调函数
-  // 回调函数的的参数，用于携带请求得到的数据
-  loadScrollImages: function (key, _type, callback) {
-
+  payAction: function (e) {
+    var code = wx.getStorageSync("payCode")
+    var index = e.currentTarget.dataset.index;
+    var item = this.data.dealerOrders[index];
+    var money = item.count * item.totalPrice;
+    var id = item.id;
+    debugger
+    WXPay.requestPay(id, money, code, function () {
+      LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/paySucess.WXPayNotifyServlet', { id: id }, function (response) {
+        debugger
+        this.getHttpData();
+      })
+    })
   },
 
   addOrder: function() {
@@ -88,12 +90,12 @@ Page({
       url: "../dealerPages/dealerAddOrder",
     })
   },
-  // /**
-  //  * 页面相关事件处理函数--监听用户下拉动作
-  //  */
-  // onPullDownRefresh: function () {
-  //   listCompment.refresh(); //下拉刷新
-  // },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    listCompment.refresh(); //下拉刷新
+  },
 
   // /**
   //  * 页面上拉触底事件的处理函数
@@ -103,8 +105,9 @@ Page({
   // },
 
   onShow: function () {
-    console.log('App Show')
-
+    console.log('App Show');
+    var that = this;
+    this.getHttpData();
   },
 
   upper: function (e) {

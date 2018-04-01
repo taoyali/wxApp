@@ -6,7 +6,7 @@
         <view bindtap='orderDetail' data-index="{{index}}">
           <view class='cellTopContent'>
             <text class='cellTopLeft'> {{item.dealerName}} </text>
-            <text class='cellTopRight' wx:if="{{item.status == 1}}">已付款</text>
+            <text class='cellTopRight' wx:if="{{item.status == 2}}">已付款</text>
             <text class='cellTopRight' wx:elif="{{item.status == 0}}">未付款</text>
           </view>
           <view class='cellBottomContent'>

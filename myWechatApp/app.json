@@ -1,17 +1,16 @@
 {
   "pages":[
-    "pages/first",
+    "pages/login/login",
+    "pages/dealerPages/dealerOrderList",
+    "pages/dealerPages/dealerAddOrder",
     "pages/order/adminOrder",
     "pages/order/orderDetail",
-    "pages/login/login",
     "pages/login/resetpwd",
     "pages/index/index",
     "pages/index/mainPage/mainPage",
     "pages/dealer/dealerList",
     "pages/dealer/dealer",
     "pages/dealer/addDealer",
-    "pages/dealerPages/dealerOrderList",
-    "pages/dealerPages/dealerAddOrder",
     "pages/product/productList",
     "pages/product/addProduct",
     "pages/logs/logs"
@@ -28,15 +27,21 @@
     "list": [
       {
         "pagePath":"pages/order/adminOrder",
-        "text": "订单"        
+        "text": "订单",
+        "iconPath": "images/login/order.png",
+        "selectedIconPath": "images/login/order.png"
       },
       {
         "pagePath": "pages/dealer/dealerList",
-        "text": "代理商"
+        "text": "代理商",
+        "iconPath": "images/login/home.png",
+        "selectedIconPath": "images/login/home.png"
       },
       {
         "pagePath": "pages/product/productList",
-        "text": "产品"
+        "text": "产品",
+        "iconPath": "images/login/product.png",
+        "selectedIconPath": "images/login/product.png"
       }
     ]
   }

@@ -22,6 +22,11 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Random;
+import java.security.MessageDigest;
+import java.math.BigInteger;
+
 /**
  * Created by taoyali on 2018/3/26.
  */
@@ -242,4 +247,51 @@ public class WXPayUtil {
         return new ByteArrayInputStream(str.getBytes());
     }
 
+    public static String getRandomOrderId() {
+        // UUID.randomUUID().toString().replace("-","")
+        Random random = new Random(System.currentTimeMillis());
+        int value = random.nextInt();
+        while (value < 0) {
+            value = random.nextInt();
+        }
+        return value + "";
+    }
+
+    public static String getClientIp(HttpServletRequest request) {
+        String ip = request.getHeader("X-Forwarded-For");
+        if(ip != null && ip.length() > 0 && !"unKnown".equalsIgnoreCase(ip)){
+            //多次反向代理后会有多个ip值，第一个ip才是真实ip
+            int index = ip.indexOf(",");
+            if(index != -1){
+                return ip.substring(0,index);
+            }else{
+                return ip;
+            }
+        }
+        ip = request.getHeader("X-Real-IP");
+        if(ip != null && ip.length() > 0 && !"unKnown".equalsIgnoreCase(ip)){
+            return ip;
+        }
+        return request.getRemoteAddr();
+    }
+
+    /**
+     * 对字符串md5加密
+     *
+     * @param str
+     * @return
+     */
+    public static String getMD5(String str) throws Exception {
+        try {
+            // 生成一个MD5加密计算摘要
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            // 计算md5函数
+            md.update(str.getBytes());
+            // digest()最后确定返回md5 hash值，返回值为8为字符串。因为md5 hash值是16位的hex值，实际上就是8位的字符
+            // BigInteger函数则将8位的字符串转换成16位hex值，用字符串来表示；得到字符串形式的hash值
+            return new BigInteger(1, md.digest()).toString(16);
+        } catch (Exception e) {
+            throw new Exception("MD5加密出现错误");
+        }
+    }
 }

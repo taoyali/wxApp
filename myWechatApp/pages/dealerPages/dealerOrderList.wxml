@@ -4,12 +4,12 @@
 <view class="dealerOrderList">
   <view class="section">
     <scroll-view class="homelist" scroll-y="true" style="height: 92%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <view wx:for="{{dealerOrders}}" class="section" data-sid="{{item.id}}" bindtap='dealerOederDetail' data-index="{{index}}">
+    <view wx:for="{{dealerOrders}}" class="section" data-sid="{{item.id}}" bindtap='dealerOrderDetail' data-index="{{index}}">
       <!-- <template is="scrollviewcell" data="{{ ...item }}" /> -->
       <view class='cellTopContent'>
         <text class='cellTopLeft'> {{item.count}} 个 {{item.productName}}; 合计 {{item.count*item.totalPrice}} </text> 
-        <text class='cellTopRight' wx:if="{{item.status == 1}}">已付款</text>
-        <text class='cellTopRight' wx:elif="{{item.status == 0}}">未付款</text>
+        <text class='cellTopRight' wx:if="{{item.status == 2}}">已付款</text>
+        <text catchtap='payAction' data-index="{{index}}" class='cellTopRight' wx:elif="{{item.status == 0}}">未付款</text>
       </view>
       <view class='cellBottomContent'> 
         <text class='cellBottomLeft'> 客户地址: {{item.address}} </text>

@@ -15,10 +15,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getHttpData();
   },
 
   getHttpData: function () {
+    wx.hideLoading();
     var that = this;
     var parameters = {
       'pageIndex': 1,
@@ -48,7 +48,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.getHttpData();
   },
 
   /**

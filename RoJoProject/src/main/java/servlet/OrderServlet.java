@@ -100,21 +100,15 @@ public class OrderServlet extends HttpServlet {
                 return;
             }
             OrderOperation addOrder = new OrderOperation();
-            String registStatus = new String();
-            Boolean status = false;
+            int id = -1;
             try {
-                status = addOrder.add(order);
-                if (status) {
-                    registStatus = "添加商品成功";
-                } else  {
-                    registStatus = "增加商品失败";
+                if (addOrder.add(order)) {
+                    id = addOrder.queryLastID();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (status) {
-                ResponseJsonUtils.json(response, error);
-            }
+            ResponseJsonUtils.json(response, id);
         } catch (Exception e) {
             System.out.print(e);
             e.printStackTrace();

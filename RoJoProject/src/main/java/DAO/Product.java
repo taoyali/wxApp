@@ -30,7 +30,6 @@ public class Product implements DAOCallBack {
             product.price = resultSet.getFloat("price");
             product.count = resultSet.getInt("count");
             products.add(product);
-            break;
         }
         return products;
     }

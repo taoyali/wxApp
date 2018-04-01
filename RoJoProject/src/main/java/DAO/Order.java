@@ -31,7 +31,7 @@ public class Order implements DAOCallBack {
     public float scaleboardHeight;
     // 商品个数
     public int count;
-    // 总价
+    // 单价
     public float totalPrice;
     // 外键商品
     public int dealer_id;

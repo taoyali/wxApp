@@ -10,6 +10,7 @@
           <element id="file-copy" path="$USER_HOME$/Downloads/mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar" />
           <element id="library" level="project" name="servlet-api" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.44" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="rojo/web/Web" />

@@ -47,7 +47,6 @@ Page({
 
   getHttpData: function () {
     var that = this;
-
     var parameters = {
       'userName': wx.getStorageSync("USER_INFO_LOGIN_NAME"),
       'userPwd': wx.getStorageSync("USER_INFO_USER_PWD"),

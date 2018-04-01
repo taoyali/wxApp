@@ -59,6 +59,12 @@
 					"name": "orderList",
 					"pathName": "pages/order/adminOrder",
 					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "dealerAddOrder",
+					"pathName": "pages/dealerPages/dealerAddOrder",
+					"query": ""
 				}
 			]
 		}

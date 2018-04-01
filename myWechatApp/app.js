@@ -8,7 +8,7 @@ App({
     var userType = wx.getStorageSync("userType");
     if (userName.length > 0 && userPwd.length > 0) {
       if (userType == 2) {  // user
-        wx.navigateTo({
+        wx.redirectTo({
           url: 'pages/dealerPages/dealerOrderList'
         })
       } else if (userType == 1) {
@@ -20,11 +20,7 @@ App({
           url: "pages/login/login",
         })
       }
-    } else {
-      wx.navigateTo({
-        url: "pages/login/login",
-      })
-    }
+    } 
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -33,33 +29,7 @@ App({
     // 登录
     wx.login({
       success: res => {
-
-        // // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // var service_url = 'https://net.rojo.vip:8443/rojo/getOpenId.WXPayServlet';//需要将服务器域名添加到小程序的request合法域名中，而且必须是https开头    
-        // var parameeters = {
-        //   code: res.code
-        // }
-        // LoadData.requestData('POST', service_url, parameters, function () {
-        //     if (res.data != null && res.data != undefined && res.data != '') {
-        //       wx.setStorageSync("openid", res.data.openid);//将获取的openid存到缓存中    
-        //     }
-        // });
-
-        debugger
-
-        var service_url = 'https://net.rojo.vip:8443/rojo/getOpenId.WXPayServlet';//需要将服务器域名添加到小程序的request合法域名中，而且必须是https开头    
-        wx.request({
-          url: service_url,
-          data: { code: res.code},
-          method: 'POST',
-          success: function (res) {
-            debugger
-            console.log(res);
-            if (res.data != null && res.data != undefined && res.data != '') {
-              wx.setStorageSync("openid", res.data.openid);//将获取的openid存到缓存中    
-            }
-          }
-        });
+        wx.setStorageSync("payCode", res.code)
       }
     }),
 
@@ -87,5 +57,5 @@ App({
 
   globalData: {
     userInfo: null,
-  }  
+  },  
 })

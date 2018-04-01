@@ -1,18 +1,19 @@
 <view>
+<form bindsubmit='addDealerOrder'>
   <view class='contentView'>
     <p class="textName">客户姓名：</p>
-    <input class='inputText'></input>
+    <input name='customName' class='inputText'></input>
   </view>
 
   <view class='contentView'>
     <p class="textName">客户手机：</p>
-    <input class='inputText'></input>
+    <input name='phone' class='inputText'></input>
   </view>
 
   <view class='contentView'>
     <p class="textName">商品名称：</p>
     <picker class='inputText' bindchange="bindPickerChange" value="{{goodIndex}}" range="{{goodNames}}">  
-      <view class="picker">  
+      <view name='productName' class="picker">  
         {{goodNames[goodIndex]}}  
       </view>  
     </picker> 
@@ -20,37 +21,48 @@
 
   <view class='contentView'>
     <p class="textName">商品数量：</p>
-    <input class='goodNum'>1</input>
+    <input name="count" bindchange='bindCountChange' class='goodNum'>1</input>
   </view>
 
   <view class='contentView'>
     <p class="textName">商品单价：</p>
-    <text class='goodPrice'> {{goodPrices[goodIndex]}} </text>
+    <!-- <text class='goodPrice'> {{goodPrices[goodIndex]}} </text> -->
+    <text name="price" class='goodPrice'> {{goodPrices[goodIndex]}} </text>
   </view>
 
-  <view class='contentView'>
+  <!-- <view class='contentView'>
     <p class="textName">安装时间：</p>
-    <input class='inputText'></input>
-  </view>
+    <input name="installDate" class='inputText'></input>
+  </view> -->
+
+  <view class='textView'>
+  <view class='titleLabel'> 上样时间: </view>
+  <!-- <input class='textInput' name="installTime"></input> -->
+  <picker class='textInput' mode="date" value="{{date}}" start="2018-04-01" end="2020-04-01" bindchange="bindDateChangeEvent">  
+    <input class="picker" name="installTime" value='{{ currentDate }}'> 
+    </input>  
+  </picker>
+</view>
+
 
   <view class='contentView'>
     <p class="textName">门类型：</p>
-    <input class='inputText'></input>
+    <input name="doorType" class='inputText'></input>
   </view>
 
   <view class='contentView'>
     <p class="textName">衬板宽度：</p>
-    <input class='inputText'></input>
+    <input name="scaleboardWidth" class='inputText'></input>
   </view>
 
   <view class='contentView'>
     <p class="textName">衬板高度：</p>
-    <input class='inputText'></input>
+    <input name="scaleboardHeight" class='inputText'></input>
   </view>
 
   <view class='contentView'>
     <p class="textName">客户地址：</p>
-    <input class='inputText'></input>
+    <input name="address" class='inputText'></input>
   </view>
 
   <view class='contentView'>
@@ -58,6 +70,11 @@
   </view>
 
   <view class='contentView'>
-    <textarea class='remarkArea'></textarea>
+    <textarea name="remake" class='remarkArea'></textarea>
   </view>
+
+  <view>
+  <button class="bottomView" formType="submit"> 提交 </button>
+  </view>
+</form>
 </view>

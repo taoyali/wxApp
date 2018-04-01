@@ -1,0 +1,17 @@
+<view class='login'>
+
+<form bindsubmit='loginAction'>
+
+<view class='identifyView'>
+<image class='identifyIcon' src='../../images/login/loginLogo.png'>
+</image>
+</view>
+<view class='loginform'>
+  <input class="phoneNumber loginInput loginFormItem" name="userName" type="number" bindchange="bindchangeInput" id="phoneNumber" placeholder='{{phoneNumberPlaceHolder}}' value='{{userName}}' />
+  <input class="loginInput loginFormItem" name="userPwd" bindchange="bindchangeInput" placeholder='{{passWordPlaceHolder}}' password='true' value='{{userPwd}}' />
+  <button class='loginButton loginFormItem' formType="submit" >{{loginButtonText}}</button>
+</view>
+
+</form>
+
+</view>

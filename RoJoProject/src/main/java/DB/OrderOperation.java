@@ -3,8 +3,11 @@ package DB;
 import DAO.DAOCallBack;
 import DAO.Dealer;
 import DAO.Order;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +31,21 @@ public class OrderOperation extends DBOperationAbstrct {
         this.pStatement.setString(2, pwd);
         ResultSet rs = this.pStatement.executeQuery();
         return callBack.callBack(rs);
+    }
+
+    public int queryLastID() throws Exception {
+        String sql = "select max(id) from myorder";
+        this.pStatement = this.connection.prepareStatement(sql);
+        ResultSet rs = this.pStatement.executeQuery();
+        rs.next();
+        return rs.getInt("max(id)");
+    }
+
+    public int update(String id) throws Exception {
+        String sql = "update myorder set status=2 where id=" + id;
+        Statement statement = this.connection.prepareStatement(sql);
+        int result = statement.executeUpdate(sql);
+        return result;
     }
 
     public boolean add(Order order) throws Exception {

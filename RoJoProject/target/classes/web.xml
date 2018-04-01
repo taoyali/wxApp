@@ -66,6 +66,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>WXPayNotifyServlet</servlet-name>
+        <servlet-class>servlet.WXPayNotifyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WXPayNotifyServlet</servlet-name>
+        <url-pattern>*.WXPayNotifyServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AuthenticationServlet</servlet-name>
         <servlet-class>servlet.AuthenticationServlet</servlet-class>
     </servlet>

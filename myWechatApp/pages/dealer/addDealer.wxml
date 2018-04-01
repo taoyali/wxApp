@@ -25,7 +25,7 @@
 <view class='textView'>
   <view class='titleLabel'> 上样时间: </view>
   <!-- <input class='textInput' name="installTime"></input> -->
-  <picker class='textInput' mode="date" value="{{date}}" start="2018-04-01" end="2020-04-01" bindchange="bindDateChangeEvent">  
+  <picker class='textInput' mode="date" value="{{date}}" start="{{ currentDate }}" end="2020-04-01" bindchange="bindDateChangeEvent">  
     <input class="picker" name="installTime" value='{{ currentDate }}'> 
     </input>  
   </picker>

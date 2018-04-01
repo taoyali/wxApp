@@ -60,7 +60,6 @@ import java.util.List;
             userInfo.setName(resultSet.getString(2));
             userInfo.setPassword(resultSet.getString(3));
             userInfos.add(userInfo);
-            break;
         }
         return userInfos;
     }

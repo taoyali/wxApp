@@ -27,13 +27,6 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter pw = response.getWriter();
-//        pw.write("<h1> hello servlet </h1>");
-//        String title = "使用 GET 方法读取表单数据";
-//        String phone = new String(request.getParameter("name").getBytes("ISO8859-1"),"UTF-8");
-//        String password = new String(request.getParameter("password").getBytes("ISO8859-1"), "UTF-8");
-
-
         JSONObject jsonObject = null;
         try {
             jsonObject = FromJson.getJsonObject(request);
@@ -43,6 +36,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
 
             int loginStatus = 1;
             int userType = 1; // 管理员
+            int userId = -1;
             String loginUserInfoString = new String();
             try {
                 ManageUserOperation dbuse = new ManageUserOperation();
@@ -61,6 +55,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
                     response.addCookie(new Cookie("USER_INFO_USER_PWD", manageUser.getPwd()));
                     loginStatus = 0;
                     userType = 1; // 用户
+                    userId = manageUser.getId();
                 } else {
                     DealerOperation dealerOperation = new DealerOperation();
                     List<Dealer> dealers = dealerOperation.query(userName, userPwd, new Dealer());
@@ -78,6 +73,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
 
                         loginStatus = 0;
                         userType = 2; // 用户
+                        userId = dealer.id;
                     }
                 }
                 if (loginStatus == 0) {
@@ -86,6 +82,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
                     data.put("authonKey", "authonKey");
                     data.put("authonToken", "authonToken");
                     data.put("userType", userType);
+                    data.put("userId", userId);
                     ResponseJsonUtils.json(response, data);
                 }
             } catch (Exception e) {

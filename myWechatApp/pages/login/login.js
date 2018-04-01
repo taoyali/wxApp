@@ -12,11 +12,14 @@ Page({
     // userName: '',
     // userPwd: '',
     userName: '18516556064',
+    // userPwd: '123',
     userPwd: 'taoyali',
   },
 
   loginAction: function(e) {
-    debugger
+    wx.showLoading({
+      title: '登录中...',
+    })
     var userName = e.detail.value["userName"];
     var userPwd = e.detail.value["userPwd"];
     var parameters = {
@@ -26,13 +29,13 @@ Page({
     if (userName.length == 11 && userPwd.length > 0) {
       this.getLoginData(parameters, function (responseData) {
         if (responseData["loginStatus"] == 0) {
-
           wx.setStorageSync("USER_INFO_LOGIN_NAME", userName);
           wx.setStorageSync("USER_INFO_USER_PWD", userPwd);
           wx.setStorageSync("userType", responseData["userType"]);
+          wx.setStorageSync("userId", responseData['userId']);
 
-          if (responseData["userType"] == 1) {
-            wx.navigateTo({
+          if (responseData["userType"] == 2) {
+            wx.redirectTo({
               url: '../dealerPages/dealerOrderList',
             })
           } else {
@@ -42,31 +45,14 @@ Page({
           }
         }
       });      
+    } else {
+      wx.showToast({
+        title: '请确认登录信息正确',
+      })
     }
-
-    // wx.navigateTo({
-    //   url: '../dealerPages/dealerOrderList'
-    // })
-
-
-
-    // wx.navigateTo({
-
-    //   url: '../order/adminOrder', 
-
-    //   // url: '../order/orderDetail?name=' + 'good'.replace(/&/g, ''), 
-
-    //   // url: '../order/adminOrder',
-    //   // if (this.data.phoneNumberPlaceHolder) {
-    //   //   url: '../order/orderDetail?name=' + this.data.phoneNumberPlaceHolder,
-    //   // } else {
-    //   //   url: '../order/orderDetail?name=' + 'error',
-    //   // }      
-    // })
   },
 
   getLoginData: function (parameters, callBack) {
-    debugger
     LoadData.requestData('POST', 'https://net.rojo.vip:8443/rojo/LoginServlet', parameters, callBack);
   },
 })
